@@ -34,8 +34,8 @@ def main() -> object:
     # | Code starts here :) |
     # '---------------------'
 
-#    git_dir = '/home/david/git-repos/'
-    git_dir = '/media/DATA/tmp/git-repositories/'
+    git_dir = '/home/david/git-repos/'
+#    git_dir = '/media/DATA/tmp/git-repositories/'
 #------------------------------------------------------------------------------
 # SCREENING CONFIGURATIONS:
 #------------------------------------------------------------------------------
@@ -47,25 +47,25 @@ def main() -> object:
 #------------------------------------------------------------------------------
 # RETRIEVAL CONFIGURATIONS:
 #------------------------------------------------------------------------------
-#    Retrieval = Training(random_seed=7,
-#                   run_prefix='ann_1_',
-#                   version='ann_1',
-#                   version_nickname='_OK_TAG_',
-#                   csv_entry='yearly_clip_br_var2d_OK_TAG.csv',
-#                   csv_path='/home/david/DATA/',
-#                   figure_path=git_dir+'ann_training/',
-#                   model_out_path=git_dir+'ann_training/',
-#                   model_out_name='final_ann_1')
-#
     Retrieval = Training(random_seed=7,
                    run_prefix='ann_1_',
                    version='ann_1',
-                   version_nickname='_under_c1_hot_0956_',
-                   csv_entry='yearly_br_underc1_hot_0956.csv',
-                   csv_path='/media/DATA/tmp/datasets/brazil/brazil_qgis/csv/',
+                   version_nickname='_OK_TAG_',
+                   csv_entry='yearly_clip_br_var2d_OK_TAG.csv',
+                   csv_path='/home/david/DATA/',
                    figure_path=git_dir+'ann_training/',
                    model_out_path=git_dir+'ann_training/',
                    model_out_name='final_ann_1')
+#
+#    Retrieval = Training(random_seed=7,
+#                   run_prefix='ann_1_',
+#                   version='ann_1',
+#                   version_nickname='_under_c1_hot_0956_',
+#                   csv_entry='yearly_br_underc1_hot_0956.csv',
+#                   csv_path='/media/DATA/tmp/datasets/brazil/brazil_qgis/csv/',
+#                   figure_path=git_dir+'ann_training/',
+#                   model_out_path=git_dir+'ann_training/',
+#                   model_out_name='final_ann_1')
 #------------------------------------------------------------------------------
 # VALIDATION CONFIGURATIONS:
 #------------------------------------------------------------------------------
