@@ -76,7 +76,7 @@ class Training:
 
         self.run_prefix = run_prefix
         self.seed = random_seed
-        self.ver = version
+        self.version = version
         self.vernick = version_nickname
         self.file = csv_entry
         self.path = csv_path
