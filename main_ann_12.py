@@ -41,8 +41,8 @@ def main() -> object:
 #------------------------------------------------------------------------------
     Screening = Training(random_seed=7,
                    csv_entry='yearly_br_underc1_hot_0956.csv',
-                   csv_path='/media/david/DATA/',
-                   model_out_path='/media/david/DATA/',
+                   csv_path='/home/david/DATA/',
+                   model_out_path='/home/david/git-repos/ann_training/',
                    model_out_name='final_screening_ann_12_')
 #------------------------------------------------------------------------------
 # RETRIEVAL CONFIGURATIONS:
