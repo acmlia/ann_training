@@ -1,0 +1,28 @@
+Running on host node010
+Time is Tue Apr 16 22:53:58 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 40605
+This job runs on the following machines:
+node010
+Running /home/david/venv366tfcpu/bin/python /home/david/git-repos/ann_training/main_ann_9.py
+Using TensorFlow backend.
+16/04/2019 22:54:37 - update_title_pos
+16/04/2019 22:54:37 - findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/david/venv366tfcpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+16/04/2019 22:54:37 - update_title_pos
+16/04/2019 22:54:41 - update_title_pos
+16/04/2019 22:54:42 - update_title_pos
+WARNING:tensorflow:From /home/david/venv366tfcpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+16/04/2019 22:54:47 - From /home/david/venv366tfcpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /home/david/venv366tfcpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+16/04/2019 22:54:47 - From /home/david/venv366tfcpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-04-16 22:54:47.802574: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2199750000 Hz
+2019-04-16 22:54:47.804461: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x579d0640 executing computations on platform Host. Devices:
+2019-04-16 22:54:47.804498: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
