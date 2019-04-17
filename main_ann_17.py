@@ -48,14 +48,14 @@ def main() -> object:
 # RETRIEVAL CONFIGURATIONS:
 #------------------------------------------------------------------------------
     Retrieval = Training(random_seed=7,
-                   run_prefix='ann_16_',
-                   version='ann_16',
+                   run_prefix='ann_17_',
+                   version='ann_17',
                    version_nickname='_underc1_0956_',
                    csv_entry='yearly_br_underc1_hot_0956.csv',
                    csv_path='/home/david/DATA/',
                    figure_path=git_dir+'ann_training/',
                    model_out_path=git_dir+'ann_training/',
-                   model_out_name='final_ann_16')
+                   model_out_name='final_ann_17')
 #
 #    Retrieval = Training(random_seed=7,
 #                   run_prefix='ann_5_',
