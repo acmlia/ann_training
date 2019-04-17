@@ -11,7 +11,7 @@ from src.training_ann_12 import Training
 #from src.graphics_builder import GraphicsBuilder
 #from src.preprocess import Preprocess
 #from src.pretraining import PreTraining
-#from src.prediction_ann_3 import Prediction
+from src.prediction_ann_12 import Prediction
 #import src.meteoro_skills
 
 
@@ -34,16 +34,16 @@ def main() -> object:
     # | Code starts here :) |
     # '---------------------'
 
-    git_dir = '/home/david/git-repos/'
+#    git_dir = '/home/david/git-repos/'
 #    git_dir = '/media/DATA/tmp/git-repositories/'
 #------------------------------------------------------------------------------
 # SCREENING CONFIGURATIONS:
 #------------------------------------------------------------------------------
-    Screening = Training(random_seed=7,
-                   csv_entry='yearly_br_underc1_hot_0956.csv',
-                   csv_path='/home/david/DATA/',
-                   model_out_path='/home/david/git-repos/ann_training/',
-                   model_out_name='final_screening_ann_12_')
+#    Screening = Training(random_seed=7,
+#                   csv_entry='yearly_br_underc1_hot_0956.csv',
+#                   csv_path='/home/david/DATA/',
+#                   model_out_path='/home/david/git-repos/ann_training/',
+#                   model_out_name='final_screening_ann_11_')
 #------------------------------------------------------------------------------
 # RETRIEVAL CONFIGURATIONS:
 #------------------------------------------------------------------------------
@@ -84,22 +84,22 @@ def main() -> object:
 #------------------------------------------------------------------------------
 # PREDICTION CONFIGURATIONS:
 #------------------------------------------------------------------------------
-#    pred = Prediction(random_seed=7,
-#                      version='ann_3',
-#                      file_csv='validation_all_atrib_SCR_pklmodel_20181123-S181431-E194705.026915.V05A.csv',
-#                      path_csv='/media/DATA/tmp/git-repositories/validation/HDF5/20181123/clip/',
-#                      figure_path='/media/DATA/tmp/git-repositories/ann_training/',
-#                      yaml_version='ann_3',
-#                      yaml_file='final_',
-#                      yaml_path='/media/DATA/tmp/git-repositories/ann_training/')
+    pred = Prediction(random_seed=7,
+                      version='ann_12',
+                      file_csv='validation_all_atrib_SI_20181123-S181431-E194705.026915.V05A.csv',
+                      path_csv='/media/DATA/tmp/git-repositories/validation/HDF5/20181123/clip/',
+                      figure_path='/media/DATA/tmp/git-repositories/ann_training/',
+                      yaml_version='ann_12',
+                      yaml_file='final_screening_',
+                      yaml_path='/media/DATA/tmp/git-repositories/ann_training/models/')
 
 
 #------------------------------------------------------------------------------
 # CALL THE PROGRAMS:
 #------------------------------------------------------------------------------
 #    Retrieval.autoExecReg()
-    Screening.autoExecClass()
-#    pred.PredictScreening()
+#    Screening.autoExecClass()
+    pred.PredictScreening()
 #    pred.PredictRetrieval()
 #    vld.AddAttributesMerge()
 #    hdf5.read_hdf5_1CGMI()
