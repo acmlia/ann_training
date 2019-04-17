@@ -85,11 +85,11 @@ def main() -> object:
 # PREDICTION CONFIGURATIONS:
 #------------------------------------------------------------------------------
     pred = Prediction(random_seed=7,
-                      version='ann_8',
+                      version='ann_19',
                       file_csv='validation_all_atrib_SCR_pklmodel_20181123-S181431-E194705.026915.V05A.csv',
                       path_csv='/media/DATA/tmp/git-repositories/validation/HDF5/20181123/clip/',
                       figure_path='/media/DATA/tmp/git-repositories/ann_training/figures/',
-                      yaml_version='ann_8',
+                      yaml_version='ann_19',
                       yaml_file='final_',
                       yaml_path='/media/DATA/tmp/git-repositories/ann_training/models/')
 
