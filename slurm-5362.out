@@ -1,0 +1,32 @@
+Running on host node007
+Time is Qua Abr 17 01:45:51 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 5362
+This job runs on the following machines:
+node007
+Running /home/david/vp368cpu/bin/python /home/david/git-repos/ann_training/main_ann_18.py
+Using TensorFlow backend.
+/home/david/vp368cpu/lib/python3.6/site-packages/sklearn/preprocessing/data.py:625: DataConversionWarning: Data with input dtype int64, float64 were all converted to float64 by StandardScaler.
+  return self.partial_fit(X, y)
+/home/david/vp368cpu/lib/python3.6/site-packages/sklearn/base.py:462: DataConversionWarning: Data with input dtype int64, float64 were all converted to float64 by StandardScaler.
+  return self.fit(X, **fit_params).transform(X)
+17/04/2019 01:46:29 - update_title_pos
+17/04/2019 01:46:29 - findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+17/04/2019 01:46:29 - update_title_pos
+17/04/2019 01:46:30 - update_title_pos
+17/04/2019 01:46:30 - update_title_pos
+WARNING:tensorflow:From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+17/04/2019 01:46:30 - From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+17/04/2019 01:46:31 - From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-04-17 01:46:31.952849: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200100000 Hz
+2019-04-17 01:46:31.954354: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0xbb73480 executing computations on platform Host. Devices:
+2019-04-17 01:46:31.954403: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
