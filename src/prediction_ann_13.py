@@ -139,7 +139,7 @@ class Prediction:
 
         # Load dataset:
         df = pd.read_csv(os.path.join(self.path, self.file), sep=',', decimal='.')
-        x = df.loc[:,['36V', '89V', '166V', '190V']]
+        x = df.loc[:,['SI', '89V', '89VH','166V','166VH', '190V', '183VH', 'PCT89']]
 
         x_arr = np.asanyarray(x)
 

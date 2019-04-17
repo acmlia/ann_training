@@ -122,12 +122,12 @@ class Prediction:
         #------------------------------------------------------------------------------
         #------------------------------------------------------------------------------ 
         ## load YAML and create model
-        yaml_file = open(self.ymlp+'screening_'+self.ymlv+'.yaml', 'r')
+        yaml_file = open(self.ymlp+'final_screening_'+self.ymlv+'.yaml', 'r')
         loaded_model_yaml = yaml_file.read()
         yaml_file.close()
         loaded_model = model_from_yaml(loaded_model_yaml)
         # load weights into new model
-        loaded_model.load_weights(self.ymlp+'screening_'+self.ymlv+'.h5')
+        loaded_model.load_weights(self.ymlp+'final_screening_'+self.ymlv+'.h5')
         print("Loaded models yaml and h5 from disk!")
 #        loaded_model = keras.models.load_model(self.ymlp+self.ymlf)
 #        loaded_model.summary()
@@ -139,7 +139,8 @@ class Prediction:
 
         # Load dataset:
         df = pd.read_csv(os.path.join(self.path, self.file), sep=',', decimal='.')
-        x = df.loc[:,['36V', '89V', '166V', '190V']]
+        x = df.loc[:,['SI', '89V', '166V', '190V']]
+        y_true = df.loc[:,['TagRain']]
 
         x_arr = np.asanyarray(x)
 
@@ -162,7 +163,6 @@ class Prediction:
         # Appplying meteorological skills to verify the performance of the model, in this case, categorical scores:
 
         skills = CategoricalScores()
-        print('>>>> DEBUG >>>>', y_true,'\n',y_pred)
         val_accuracy, val_bias, val_pod, val_pofd, val_far, val_csi, val_ph, val_ets, val_hss, val_hkd, val_num_pixels = skills.metrics(y_true, y_pred)
         
         #converting to text file
@@ -179,7 +179,7 @@ class Prediction:
                      'val_hkd': val_hkd,
                      'val_num_pixels': val_num_pixels}
 
-        with open('cateorical_scores_R1.txt', 'w') as myfile:
+        with open('categorical_scores_screening_'+self.ymlv+'.txt', 'w') as myfile:
              myfile.write(str(my_scores))
         print("Text file saved!")
         # ------------------------------------------------------------------------------

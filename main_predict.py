@@ -6,7 +6,7 @@ import os, sys
 import pandas as pd
 import numpy as np
 
-from src.training_ann_13 import Training
+from src.training_ann import Training
 #from src.validation import Validation
 #from src.graphics_builder import GraphicsBuilder
 #from src.preprocess import Preprocess
@@ -85,11 +85,11 @@ def main() -> object:
 # PREDICTION CONFIGURATIONS:
 #------------------------------------------------------------------------------
     pred = Prediction(random_seed=7,
-                      version='ann_19',
+                      version='ann_11',
                       file_csv='validation_all_atrib_SCR_pklmodel_20181123-S181431-E194705.026915.V05A.csv',
                       path_csv='/media/DATA/tmp/git-repositories/validation/HDF5/20181123/clip/',
                       figure_path='/media/DATA/tmp/git-repositories/ann_training/figures/',
-                      yaml_version='ann_19',
+                      yaml_version='ann_11',
                       yaml_file='final_',
                       yaml_path='/media/DATA/tmp/git-repositories/ann_training/models/')
 
@@ -99,8 +99,8 @@ def main() -> object:
 #------------------------------------------------------------------------------
 #    Retrieval.autoExecReg()
 #    Screening.autoExecClass()
-#    pred.PredictScreening()
-    pred.PredictRetrieval()
+    pred.PredictScreening()
+#    pred.PredictRetrieval()
 #    vld.AddAttributesMerge()
 #    hdf5.read_hdf5_1CGMI()
 #    hdf5.read_hdf5_2AGPROF()
