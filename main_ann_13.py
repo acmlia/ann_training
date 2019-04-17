@@ -6,7 +6,7 @@ import os, sys
 import pandas as pd
 import numpy as np
 
-from src.training_ann_11 import Training
+from src.training_ann_13 import Training
 #from src.validation import Validation
 #from src.graphics_builder import GraphicsBuilder
 #from src.preprocess import Preprocess
@@ -43,7 +43,7 @@ def main() -> object:
                    csv_entry='yearly_br_underc1_hot_0956.csv',
                    csv_path='/home/david/DATA/',
                    model_out_path='/home/david/git-repos/ann_training/',
-                   model_out_name='final_screening_ann_11_')
+                   model_out_name='final_screening_ann_13_')
 #------------------------------------------------------------------------------
 # RETRIEVAL CONFIGURATIONS:
 #------------------------------------------------------------------------------
