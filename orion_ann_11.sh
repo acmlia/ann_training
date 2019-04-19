@@ -1,5 +1,5 @@
 #!/bin/bash
-#SBATCH -J TensorFlow
+#SBATCH -J TF_ANN_11
 #SBATCH --partition=defq
 #SBATCH -N 1
 #SBATCH --ntasks-per-node=20
