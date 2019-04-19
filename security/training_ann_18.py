@@ -107,8 +107,8 @@ class Training:
         '''
         # Create the Keras model:
         model = Sequential()
-        model.add(Dense(8, input_dim=4, kernel_initializer='uniform', activation='linear'))
-        model.add(Dense(2, kernel_initializer='uniform', activation='linear'))
+        model.add(Dense(8, input_dim=4, kernel_initializer='uniform', activation='relu'))
+        model.add(Dense(2, kernel_initializer='uniform', activation='relu'))
         model.add(Dense(1, kernel_initializer='uniform', activation='sigmoid'))
         # Compile model
         model.compile(loss='binary_crossentropy', optimizer='SGD', metrics=['accuracy'],)
@@ -122,8 +122,8 @@ class Training:
         '''
         model = Sequential()
         model.add(GaussianNoise(0.01, input_shape=(input_size,)))
-        model.add(Dense(24, activation='relu'))
-        model.add(Dense(10, activation='relu'))
+        model.add(Dense(33, activation='linear'))
+        model.add(Dense(11, activation='linear'))
         model.add(Dense(1))
         model.compile(loss='mean_squared_error',
                       optimizer='adam',
@@ -141,7 +141,7 @@ class Training:
 
         # Load dataset:
         df = pd.read_csv(os.path.join(self.path, self.file), sep=',', decimal='.')
-        x, y= df.loc[:,['SI', '89V', '166V', '190V']], df.loc[:,['TagRain']]
+        x, y= df.loc[:,['36V', '89V', '166V', '190V']], df.loc[:,['TagRain']]
         
         x_arr = np.asanyarray(x)
         y_arr = np.asanyarray(y)
@@ -185,30 +185,17 @@ class Training:
 # ------------------------------------------------------------------------------
         # Saving model to YAML:
 
-        model_yaml = model.to_yaml()
-        with open(self.mod_out_pth + self.mod_out_name + '.yaml', 'w') as yaml_file:
-            yaml_file.write(model_yaml)
-
-        # serialize weights to HDF5
-        model.save_weights(self.mod_out_pth + self.mod_out_name + '.h5')
-        print("Saved model to disk")
-        tac()
-    # ------------------------------------------------------------------------------
-    #
-    # ------------------------------------------------------------------------------
+#        model_yaml = model.to_yaml()
+#        with open(self.mod_out_pth + self.mod_out_name + '.yaml', 'w') as yaml_file:
+#            yaml_file.write(model_yaml)
+#
+#        # serialize weights to HDF5
+#        model.save_weights(self.mod_out_pth + self.mod_out_name + '.h5')
+#        print("Saved model to disk")
+#        tac()
 
         # Saving the complete model in HDF5:
-#        model.save(self.mod_out_pth + self.mod_out_name + '.h5')
-    # ------------------------------------------------------------------------------
-    #
-    # ------------------------------------------------------------------------------
-        # Saving a model
-if __name__ == '__main__':
-    _start_time = time.time()
-    training_model = Training()
-    trained_model = training_model.autoExecClass()
-    joblib.dump(trained_model, 'final_screening_ann_11.pkl')
-
+        model.save(self.mod_out_pth + self.mod_out_name + '.h5')
 
     # ------------------------------------------------------------------------------
     #
@@ -284,7 +271,7 @@ if __name__ == '__main__':
         dataset = dataset.join(df_orig.loc[:, ['sfcprcp']], how='right')
         # ------------------------------------------------------------------------------
 
-        dataset = self.keep_interval(0.2, 100, dataset, 'sfcprcp')
+        dataset = self.keep_interval(0.2, 60, dataset, 'sfcprcp')
 
         # ----------------------------------------
         # SUBSET BY SPECIFIC CLASS (UNDERSAMPLING)

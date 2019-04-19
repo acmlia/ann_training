@@ -122,15 +122,15 @@ class Prediction:
         #------------------------------------------------------------------------------
         #------------------------------------------------------------------------------ 
         ## load YAML and create model
-        yaml_file = open(self.ymlp+'final_screening_'+self.ymlv+'.yaml', 'r')
-        loaded_model_yaml = yaml_file.read()
-        yaml_file.close()
-        loaded_model = model_from_yaml(loaded_model_yaml)
-        # load weights into new model
-        loaded_model.load_weights(self.ymlp+'final_screening_'+self.ymlv+'.h5')
-        print("Loaded models yaml and h5 from disk!")
-#        loaded_model = keras.models.load_model(self.ymlp+self.ymlf)
-#        loaded_model.summary()
+#        yaml_file = open(self.ymlp+'final_screening_'+self.ymlv+'.yaml', 'r')
+#        loaded_model_yaml = yaml_file.read()
+#        yaml_file.close()
+#        loaded_model = model_from_yaml(loaded_model_yaml)
+#        # load weights into new model
+#        loaded_model.load_weights(self.ymlp+'final_screening_'+self.ymlv+'.h5')
+#        print("Loaded models yaml and h5 from disk!")
+        loaded_model = keras.models.load_model(self.ymlp+self.ymlf+'.h5')
+        loaded_model.summary()
         #------------------------------------------------------------------------------
         #------------------------------------------------------------------------------
         
@@ -187,7 +187,7 @@ class Prediction:
         df['SCR'] = ""
         df['SCR'] = y_pred
         filename=self.file[22:58]
-        filename = 'validation_SCR_'+filename+'.csv'
+        filename = 'validation_SCR_ann_11_'+filename+'.csv'
         df.to_csv(os.path.join(self.path, filename), index=False, sep=",", decimal='.')
 
         return df
