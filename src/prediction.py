@@ -122,15 +122,15 @@ class Prediction:
         #------------------------------------------------------------------------------
         #------------------------------------------------------------------------------ 
         ## load YAML and create model
-#        yaml_file = open(self.ymlp+'screening_'+self.ymlv+'.yaml', 'r')
-#        loaded_model_yaml = yaml_file.read()
-#        yaml_file.close()
-#        loaded_model = model_from_yaml(loaded_model_yaml)
-#        # load weights into new model
-#        loaded_model.load_weights(self.ymlp+'screening_'+self.ymlv+'.h5')
-#        print("Loaded models yaml and h5 from disk!")
-        loaded_model = keras.models.load_model(self.ymlp+self.ymlf)
-        loaded_model.summary()
+        yaml_file = open(self.ymlp+'screening_'+self.ymlv+'.yaml', 'r')
+        loaded_model_yaml = yaml_file.read()
+        yaml_file.close()
+        loaded_model = model_from_yaml(loaded_model_yaml)
+        # load weights into new model
+        loaded_model.load_weights(self.ymlp+'screening_'+self.ymlv+'.h5')
+        print("Loaded models yaml and h5 from disk!")
+#        loaded_model = keras.models.load_model(self.ymlp+self.ymlf)
+#        loaded_model.summary()
         #------------------------------------------------------------------------------
         #------------------------------------------------------------------------------
         

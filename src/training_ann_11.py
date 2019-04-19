@@ -107,8 +107,8 @@ class Training:
         '''
         # Create the Keras model:
         model = Sequential()
-        model.add(Dense(8, input_dim=4, kernel_initializer='uniform', activation='relu'))
-        model.add(Dense(2, kernel_initializer='uniform', activation='relu'))
+        model.add(Dense(8, input_dim=4, kernel_initializer='uniform', activation='linear'))
+        model.add(Dense(2, kernel_initializer='uniform', activation='linear'))
         model.add(Dense(1, kernel_initializer='uniform', activation='sigmoid'))
         # Compile model
         model.compile(loss='binary_crossentropy', optimizer='SGD', metrics=['accuracy'],)
