@@ -25,7 +25,7 @@ config:
       kernel_regularizer: null
       name: dense_4
       trainable: true
-      units: 24
+      units: 33
       use_bias: true
   - class_name: Dense
     config:
@@ -43,7 +43,7 @@ config:
       kernel_regularizer: null
       name: dense_5
       trainable: true
-      units: 10
+      units: 11
       use_bias: true
   - class_name: Dense
     config:
