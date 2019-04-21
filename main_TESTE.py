@@ -5,13 +5,13 @@ import logging
 import os, sys
 import pandas as pd
 import numpy as np
-
+from sklearn.externals import joblib
 from src.training_ann_TESTE import Training
 #from src.validation import Validation
 #from src.graphics_builder import GraphicsBuilder
 #from src.preprocess import Preprocess
 #from src.pretraining import PreTraining
-#from src.prediction_ann_3 import Prediction
+from src.prediction import Prediction
 #import src.meteoro_skills
 
 
@@ -35,15 +35,13 @@ def main() -> object:
     # '---------------------'
 
 #    git_dir = '/home/david/git-repos/'
-    git_dir = '/media/DATA/tmp/git-repositories/'
+#    git_dir = '/media/DATA/tmp/git-repositories/'
 #------------------------------------------------------------------------------
 # SCREENING CONFIGURATIONS:
 #------------------------------------------------------------------------------
 #    Screening = Training(random_seed=7,
 #                   csv_entry='yearly_br_underc1_hot_0956.csv',
-#                   csv_path='/home/david/DATA/',
-#                   model_out_path='/home/david/DATA/',
-#                   model_out_name='screening_SCR1_')
+#                   csv_path='/media/DATA/tmp/datasets/brazil/brazil_qgis/csv/')
 #------------------------------------------------------------------------------
 # RETRIEVAL CONFIGURATIONS:
 #------------------------------------------------------------------------------
@@ -57,15 +55,15 @@ def main() -> object:
 #                   model_out_path=git_dir+'ann_training/',
 #                   model_out_name='final_ann_20')
 ##
-    Retrieval = Training(random_seed=7,
-                   run_prefix='ann_TESTE_',
-                   version='ann_TESTE',
-                   version_nickname='_11m_',
-                   csv_entry='yearly_br_underc1_hot_0956.csv',
-                   csv_path='/media/DATA/tmp/datasets/brazil/brazil_qgis/csv/',
-                   figure_path=git_dir+'ann_training/',
-                   model_out_path=git_dir+'ann_training/',
-                   model_out_name='final_ann_TESTE')
+#    Retrieval = Training(random_seed=7,
+#                   run_prefix='ann_TESTE_',
+#                   version='ann_TESTE',
+#                   version_nickname='_11m_',
+#                   csv_entry='yearly_br_underc1_hot_0956.csv',
+#                   csv_path='/media/DATA/tmp/datasets/brazil/brazil_qgis/csv/',
+#                   figure_path=git_dir+'ann_training/',
+#                   model_out_path=git_dir+'ann_training/',
+#                   model_out_name='final_ann_TESTE')
 #------------------------------------------------------------------------------
 # VALIDATION CONFIGURATIONS:
 #------------------------------------------------------------------------------
@@ -93,13 +91,20 @@ def main() -> object:
 #                      yaml_file='final_',
 #                      yaml_path='/media/DATA/tmp/git-repositories/ann_training/')
 
+    pred = Prediction(random_seed=7,
+                      version='TESTE',
+                      file_csv='validation_all_atrib_SCR_pklmodel_20181123-S181431-E194705.026915.V05A.csv',
+                      path_csv='/media/DATA/tmp/git-repositories/validation/HDF5/20181123/clip/')
 
 #------------------------------------------------------------------------------
 # CALL THE PROGRAMS:
 #------------------------------------------------------------------------------
-    Retrieval.autoExecReg()
-#    Screening.autoExecClass()
-#    pred.PredictScreening()
+#    Retrieval.autoExecReg()
+#    modelo=Screening.autoExecClass()
+#    joblib.dump(modelo, 'screening_TESTE.pkl')
+
+    pred.PredictScreening()
+
 #    pred.PredictRetrieval()
 #    vld.AddAttributesMerge()
 #    hdf5.read_hdf5_1CGMI()
