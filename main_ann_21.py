@@ -34,8 +34,8 @@ def main() -> object:
     # | Code starts here :) |
     # '---------------------'
 
-#    git_dir = '/home/david/git-repos/'
-    git_dir = '/media/DATA/tmp/git-repositories/'
+    git_dir = '/home/david/git-repos/'
+#    git_dir = '/media/DATA/tmp/git-repositories/'
 #------------------------------------------------------------------------------
 # SCREENING CONFIGURATIONS:
 #------------------------------------------------------------------------------
@@ -50,8 +50,8 @@ def main() -> object:
     Retrieval = Training(random_seed=7,
                    run_prefix='ann_21_',
                    version='ann_21',
-                   version_nickname='_11m_',
-                   csv_entry='train_data_11m.csv',
+                   version_nickname='_11m_outliers_',
+                   csv_entry='train_data_11m_outliers.csv',
                    csv_path='/home/david/DATA/',
                    figure_path=git_dir+'ann_training/',
                    model_out_path=git_dir+'ann_training/',

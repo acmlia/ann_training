@@ -373,7 +373,7 @@ class Training:
         # ------------------------------------------------------------------------------
         # Ploting again, but with the EarlyStopping apllied:
 
-        self.plot_history_EarlyStopping(history)
+        #self.plot_history_EarlyStopping(history)
 
         # The graph shows that on the validation set, the average error
         # is usually around +/- 2 MPG. Is this good?
@@ -396,24 +396,24 @@ class Training:
 
         # Appplying meteorological skills to verify the performance of the TRAIN/TESTE model, in this case, continous scores:
 
-        skills = ContinuousScores()
-        val_y_pred_mean, val_y_test_mean, val_mae, val_rmse, val_std, val_fseperc, val_fse, val_corr, val_num_pixels = skills.metrics(y_test, test_predictions)
-        
-        #converting to text file
-        print("converting arrays to text files")
-        my_scores = {'val_y_pred_mean': val_y_pred_mean,
-                     'val_y_test_mean': val_y_test_mean,
-                     'val_mae': val_mae,
-                     'val_rmse': val_rmse,
-                     'val_std': val_std,
-                     'val_fseperc': val_fseperc,
-                     'val_fse': val_fse,
-                     'val_corr': val_corr,
-                     'val_num_pixels': val_num_pixels}
-
-        with open(self.path_fig+'continuous_scores_TEST_TRAIN_'+self.version+'.txt', 'w') as myfile:
-             myfile.write(str(my_scores))
-        print("Text file saved!")
+#        skills = ContinuousScores()
+#        val_y_pred_mean, val_y_test_mean, val_mae, val_rmse, val_std, val_fseperc, val_fse, val_corr, val_num_pixels = skills.metrics(y_test, test_predictions)
+#        
+#        #converting to text file
+#        print("converting arrays to text files")
+#        my_scores = {'val_y_pred_mean': val_y_pred_mean,
+#                     'val_y_test_mean': val_y_test_mean,
+#                     'val_mae': val_mae,
+#                     'val_rmse': val_rmse,
+#                     'val_std': val_std,
+#                     'val_fseperc': val_fseperc,
+#                     'val_fse': val_fse,
+#                     'val_corr': val_corr,
+#                     'val_num_pixels': val_num_pixels}
+#
+#        with open(self.path_fig+'continuous_scores_TEST_TRAIN_'+self.version+'.txt', 'w') as myfile:
+#             myfile.write(str(my_scores))
+#        print("Text file saved!")
 
         plt.figure()
         plt.scatter(y_test, test_predictions)
