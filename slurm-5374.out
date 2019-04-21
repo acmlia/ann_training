@@ -1,0 +1,73 @@
+Running on host node004
+Time is Dom Abr 21 00:15:38 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 5374
+This job runs on the following machines:
+node004
+Running /home/david/vp368cpu/bin/python /home/david/git-repos/ann_training/main_ann_20.py
+Using TensorFlow backend.
+21/04/2019 00:16:16 - update_title_pos
+21/04/2019 00:16:16 - findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+21/04/2019 00:16:16 - update_title_pos
+21/04/2019 00:16:20 - update_title_pos
+21/04/2019 00:16:20 - update_title_pos
+WARNING:tensorflow:From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+21/04/2019 00:16:26 - From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+21/04/2019 00:16:26 - From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-04-21 00:16:27.088253: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200180000 Hz
+2019-04-21 00:16:27.089363: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x525e1e50 executing computations on platform Host. Devices:
+2019-04-21 00:16:27.089402: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+TF version 1.13.1
+original shape:    (3309877, 4)
+transformed shape: (3309877, 2)
+original shape:    (3309877, 6)
+transformed shape: (3309877, 2)
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+gaussian_noise_1 (GaussianNo (None, 12)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 24)                312       
+_________________________________________________________________
+dense_2 (Dense)              (None, 10)                250       
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 11        
+=================================================================
+Total params: 573
+Trainable params: 573
+Non-trainable params: 0
+_________________________________________________________________
+
+....................................................................................................
+....................................................................................................
+....................................................................................................
+....................................................................................................dict_keys(['val_loss', 'val_mean_squared_error', 'loss', 'mean_squared_error'])
+Traceback (most recent call last):
+  File "/home/david/git-repos/ann_training/main_ann_20.py", line 260, in <module>
+    main()
+  File "/home/david/git-repos/ann_training/main_ann_20.py", line 100, in main
+    Retrieval.autoExecReg()
+  File "/home/david/git-repos/ann_training/src/training_ann_20.py", line 362, in autoExecReg
+    self.plot_history(history)
+  File "/home/david/git-repos/ann_training/src/training_ann_20.py", line 510, in plot_history
+    plt.ylim([0, ylim_max])
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/pyplot.py", line 1479, in ylim
+    ret = ax.set_ylim(*args, **kwargs)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/axes/_base.py", line 3617, in set_ylim
+    top = self._validate_converted_limits(top, self.convert_yunits)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/axes/_base.py", line 3139, in _validate_converted_limits
+    raise ValueError("Axis limits cannot be NaN or Inf")
+ValueError: Axis limits cannot be NaN or Inf
+
+real	37m18.965s
+user	70m39.241s
+sys	11m34.070s

@@ -141,6 +141,14 @@ class Training:
 
         # Load dataset:
         df = pd.read_csv(os.path.join(self.path, self.file), sep=',', decimal='.')
+        # SUBSET BY SPECIFIC CLASS (UNDERSAMPLING)
+        n = 0.98
+        to_remove = np.random.choice(
+            df.index,
+            size=int(df.shape[0] * n),
+            replace=False)
+        df = df.drop(to_remove)
+
         x, y= df.loc[:,['36V', '89V', '166V', '190V']], df.loc[:,['TagRain']]
         
         x_arr = np.asanyarray(x)
@@ -168,7 +176,7 @@ class Training:
                 if epoch % 100 == 0: print('')
                 print('.', end='')
 
-        EPOCHS = 1000
+        EPOCHS = 400
 
         history = model.fit(x_train, y_train,
                             epochs=EPOCHS, validation_split=0.2, batch_size=10,
@@ -195,7 +203,10 @@ class Training:
 #        tac()
 
         # Saving the complete model in HDF5:
-        model.save(self.mod_out_pth + self.mod_out_name + '.h5')
+        # model.save(self.mod_out_pth + self.mod_out_name + '.h5')
+
+        # Return the model to be saved in main.py structure:
+        return model
 
     # ------------------------------------------------------------------------------
     #

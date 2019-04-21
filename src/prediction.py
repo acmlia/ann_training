@@ -122,15 +122,16 @@ class Prediction:
         #------------------------------------------------------------------------------
         #------------------------------------------------------------------------------ 
         ## load YAML and create model
-        yaml_file = open(self.ymlp+'screening_'+self.ymlv+'.yaml', 'r')
-        loaded_model_yaml = yaml_file.read()
-        yaml_file.close()
-        loaded_model = model_from_yaml(loaded_model_yaml)
-        # load weights into new model
-        loaded_model.load_weights(self.ymlp+'screening_'+self.ymlv+'.h5')
-        print("Loaded models yaml and h5 from disk!")
+#        yaml_file = open(self.ymlp+'screening_'+self.ymlv+'.yaml', 'r')
+#        loaded_model_yaml = yaml_file.read()
+#        yaml_file.close()
+#        loaded_model = model_from_yaml(loaded_model_yaml)
+#        # load weights into new model
+#        loaded_model.load_weights(self.ymlp+'screening_'+self.ymlv+'.h5')
+#        print("Loaded models yaml and h5 from disk!")
 #        loaded_model = keras.models.load_model(self.ymlp+self.ymlf)
 #        loaded_model.summary()
+        loaded_model = joblib.load('screening_TESTE.pkl')
         #------------------------------------------------------------------------------
         #------------------------------------------------------------------------------
         
@@ -140,6 +141,8 @@ class Prediction:
         # Load dataset:
         df = pd.read_csv(os.path.join(self.path, self.file), sep=',', decimal='.')
         x = df.loc[:,['36V', '89V', '166V', '190V']]
+        y = df.loc[:,['TagRain']]
+        y_true = np.ravel(y)
 
         x_arr = np.asanyarray(x)
 
@@ -178,7 +181,7 @@ class Prediction:
                      'val_hkd': val_hkd,
                      'val_num_pixels': val_num_pixels}
 
-        with open('cateorical_scores_R1.txt', 'w') as myfile:
+        with open('cateorical_scores_TESTE.txt', 'w') as myfile:
              myfile.write(str(my_scores))
         print("Text file saved!")
         # ------------------------------------------------------------------------------
@@ -186,7 +189,7 @@ class Prediction:
         df['SCR'] = ""
         df['SCR'] = y_pred
         filename=self.file[22:58]
-        filename = 'validation_SCR_'+filename+'.csv'
+        filename = 'validation_SCR_TESTE'+filename+'.csv'
         df.to_csv(os.path.join(self.path, filename), index=False, sep=",", decimal='.')
 
         return df

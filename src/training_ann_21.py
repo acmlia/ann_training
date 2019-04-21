@@ -127,7 +127,7 @@ class Training:
         model.add(Dense(1))
         model.compile(loss='mean_squared_error',
                       optimizer='SGD',
-                      metrics=['mean_absolute_error', 'mean_squared_error'])
+                      metrics=['mean_squared_error'])
         return model
 
     # -------------------------------------------------------------------------
@@ -359,7 +359,7 @@ class Training:
         hist['epoch'] = history.epoch
         hist.tail()
 
-        self.plot_history(history)
+        #self.plot_history(history)
         # ------------------------------------------------------------------------------
 
         model = self.build_reg_model(len(train_dataset.keys()))
@@ -373,7 +373,7 @@ class Training:
         # ------------------------------------------------------------------------------
         # Ploting again, but with the EarlyStopping apllied:
 
-        self.plot_history_EarlyStopping(history)
+        #self.plot_history_EarlyStopping(history)
 
         # The graph shows that on the validation set, the average error
         # is usually around +/- 2 MPG. Is this good?
@@ -384,9 +384,9 @@ class Training:
         # This tells us how well we can expect the model to predict
         # when we use it in the real world.
 
-        loss, mae, mse = model.evaluate(normed_test_data, y_test, verbose=0)
+        loss, mse = model.evaluate(normed_test_data, y_test, verbose=0)
 
-        print("Testing set Mean Abs Error: {:5.2f} sfcprcp".format(mae))
+        print("Testing set Mean Squared Error: {:5.2f} sfcprcp".format(mse))
         #------------------------------------------------------------------------------
         # -----------------------------------------------------------------------------
         # Make predictions
@@ -489,15 +489,15 @@ class Training:
         hist = pd.DataFrame(history.history)
         hist['epoch'] = history.epoch
 
-        plt.xlabel('Epoch')
-        plt.ylabel('Mean Abs Error [sfcprcp]')
-        plt.plot(hist['epoch'], hist['mean_absolute_error'],
-                 label='Train Error')
-        plt.plot(hist['epoch'], hist['val_mean_absolute_error'],
-                 label='Val Error')
-        ylim_max = hist.val_mean_absolute_error.max() + 10
-        plt.ylim([0, ylim_max])
-        plt.legend()
+#        plt.xlabel('Epoch')
+#        plt.ylabel('Mean Abs Error [sfcprcp]')
+#        plt.plot(hist['epoch'], hist['mean_absolute_error'],
+#                 label='Train Error')
+#        plt.plot(hist['epoch'], hist['val_mean_absolute_error'],
+#                 label='Val Error')
+#        ylim_max = hist.val_mean_absolute_error.max() + 10
+#        plt.ylim([0, ylim_max])
+#        plt.legend()
 
         plt.figure()
         plt.xlabel('Epoch')
@@ -517,15 +517,15 @@ class Training:
         hist = pd.DataFrame(history.history)
         hist['epoch'] = history.epoch
 
-        plt.figure()
-        plt.xlabel('Epoch')
-        plt.ylabel('Mean Abs Error [sfcprcp]')
-        plt.plot(hist['epoch'], hist['mean_absolute_error'],
-                 label='Train Error')
-        plt.plot(hist['epoch'], hist['val_mean_absolute_error'],
-                 label='Val Error')
-        ylim_max = hist.val_mean_absolute_error.max() + 10
-        plt.ylim([0, ylim_max])
+#        plt.figure()
+#        plt.xlabel('Epoch')
+#        plt.ylabel('Mean Abs Error [sfcprcp]')
+#        plt.plot(hist['epoch'], hist['mean_absolute_error'],
+#                 label='Train Error')
+#        plt.plot(hist['epoch'], hist['val_mean_absolute_error'],
+#                 label='Val Error')
+#        ylim_max = hist.val_mean_absolute_error.max() + 10
+#        plt.ylim([0, ylim_max])
 
         plt.legend()
 

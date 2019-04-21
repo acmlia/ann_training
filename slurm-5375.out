@@ -1,0 +1,77 @@
+Running on host node005
+Time is Dom Abr 21 00:16:05 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 5375
+This job runs on the following machines:
+node005
+Running /home/david/vp368cpu/bin/python /home/david/git-repos/ann_training/main_ann_21.py
+Using TensorFlow backend.
+21/04/2019 00:16:44 - update_title_pos
+21/04/2019 00:16:44 - findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+21/04/2019 00:16:44 - update_title_pos
+21/04/2019 00:16:49 - update_title_pos
+21/04/2019 00:16:49 - update_title_pos
+WARNING:tensorflow:From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+21/04/2019 00:16:58 - From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+21/04/2019 00:16:59 - From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-04-21 00:16:59.158007: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200205000 Hz
+2019-04-21 00:16:59.159146: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x525e2f80 executing computations on platform Host. Devices:
+2019-04-21 00:16:59.159183: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+TF version 1.13.1
+original shape:    (3309877, 4)
+transformed shape: (3309877, 2)
+original shape:    (3309877, 6)
+transformed shape: (3309877, 2)
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+gaussian_noise_1 (GaussianNo (None, 12)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 33)                429       
+_________________________________________________________________
+dense_2 (Dense)              (None, 11)                374       
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 12        
+=================================================================
+Total params: 815
+Trainable params: 815
+Non-trainable params: 0
+_________________________________________________________________
+
+....................................................................................................
+....................................................................................................
+....................................................................................................
+....................................................................................................dict_keys(['val_loss', 'val_mean_squared_error', 'loss', 'mean_squared_error'])
+
+..........Testing set Mean Squared Error:   nan sfcprcp
+Traceback (most recent call last):
+  File "/home/david/git-repos/ann_training/main_ann_21.py", line 260, in <module>
+    main()
+  File "/home/david/git-repos/ann_training/main_ann_21.py", line 100, in main
+    Retrieval.autoExecReg()
+  File "/home/david/git-repos/ann_training/src/training_ann_21.py", line 400, in autoExecReg
+    val_y_pred_mean, val_y_test_mean, val_mae, val_rmse, val_std, val_fseperc, val_fse, val_corr, val_num_pixels = skills.metrics(y_test, test_predictions)
+  File "/home/david/git-repos/ann_training/src/meteoro_skills.py", line 73, in metrics
+    mae = mean_absolute_error(obs,pred)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/sklearn/metrics/regression.py", line 170, in mean_absolute_error
+    y_true, y_pred, multioutput)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/sklearn/metrics/regression.py", line 77, in _check_reg_targets
+    y_pred = check_array(y_pred, ensure_2d=False)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/sklearn/utils/validation.py", line 573, in check_array
+    allow_nan=force_all_finite == 'allow-nan')
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/sklearn/utils/validation.py", line 56, in _assert_all_finite
+    raise ValueError(msg_err.format(type_err, X.dtype))
+ValueError: Input contains NaN, infinity or a value too large for dtype('float32').
+
+real	39m17.700s
+user	73m46.587s
+sys	12m9.401s
