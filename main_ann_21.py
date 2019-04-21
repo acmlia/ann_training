@@ -34,8 +34,8 @@ def main() -> object:
     # | Code starts here :) |
     # '---------------------'
 
-#    git_dir = '/home/david/git-repos/'
-    git_dir = '/media/DATA/tmp/git-repositories/'
+    git_dir = '/home/david/git-repos/'
+#    git_dir = '/media/DATA/tmp/git-repositories/'
 #------------------------------------------------------------------------------
 # SCREENING CONFIGURATIONS:
 #------------------------------------------------------------------------------
