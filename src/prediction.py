@@ -162,7 +162,6 @@ class Prediction:
         # Appplying meteorological skills to verify the performance of the model, in this case, categorical scores:
 
         skills = CategoricalScores()
-        print('>>>> DEBUG >>>>', y_true,'\n',y_pred)
         val_accuracy, val_bias, val_pod, val_pofd, val_far, val_csi, val_ph, val_ets, val_hss, val_hkd, val_num_pixels = skills.metrics(y_true, y_pred)
         
         #converting to text file
@@ -239,7 +238,7 @@ class Prediction:
         plt.plot(np.cumsum(pca1.explained_variance_ratio_))
         plt.xlabel('Number of components for TB1')
         plt.ylabel('Cumulative explained variance');
-        plt.savefig(self.path_fig + self.tver + '_PCA_TB1.png')
+        #plt.savefig(self.path_fig + self.tver + '_PCA_TB1.png')
         # ---
         pca_trans1 = PCA(n_components=2)
         pca1 = pca_trans1.fit(TB1)
@@ -252,7 +251,7 @@ class Prediction:
         plt.plot(np.cumsum(pca2.explained_variance_ratio_))
         plt.xlabel('Number of components for TB2')
         plt.ylabel('Cumulative explained variance');
-        plt.savefig(self.path_fig + self.tver + 'PCA_TB2.png')
+        #plt.savefig(self.path_fig + self.tver + 'PCA_TB2.png')
         # ---
         pca_trans2 = PCA(n_components=2)
         pca2 = pca_trans2.fit(TB2)
@@ -270,17 +269,18 @@ class Prediction:
         dataset = PCA1.join(PCA2, how='right')
         dataset = dataset.join(ancillary, how='right')
         dataset = dataset.join(df_orig.loc[:, ['sfcprcp']], how='right')
-        dataset = dataset.join(df_orig.loc[:, ['SCR']], how='right')
+        dataset = dataset.join(df_orig.loc[:, ['SCR01']], how='right')
         # ------------------------------------------------------------------------------
         #dataset = self.keep_interval(0.1, 75.0, dataset, 'sfcprcp')
         
-        NaN_pixels = np.where((dataset['sfcprcp'] != -9999.0))
-        dataset = dataset.iloc[NaN_pixels]
-        SCR_pixels = np.where((dataset['SCR'] == 1))
+#        NaN_pixels = np.where((dataset['sfcprcp'] != -9999.0))
+#        dataset = dataset.iloc[NaN_pixels]
+        dataset = dataset.dropna()
+        SCR_pixels = np.where((dataset['SCR01'] == 1))
         dataset = dataset.iloc[SCR_pixels]
         dataset_index=dataset.index.values
         
-        SCR = dataset.pop('SCR')
+        SCR = dataset.pop('SCR01')
         y_true = dataset.pop('sfcprcp')
 
         x_normed = dataset.values
@@ -304,7 +304,7 @@ class Prediction:
                      'val_corr': val_corr,
                      'val_num_pixels': val_num_pixels}
 
-        with open(self.ymlp+'continuous_scores_'+self.ymlv+'.txt', 'w') as myfile:
+        with open(self.path+'continuous_scores_SCR01_'+self.tver+'_'+self.ymlv+'.txt', 'w') as myfile:
              myfile.write(str(my_scores))
         print("Text file saved!")
 
@@ -313,8 +313,8 @@ class Prediction:
         df_final = df_orig.iloc[dataset_index]
         df_final['y_true'] = y_true.values
         df_final['y_pred'] = y_pred
-        filename=self.file[21:58]
-        filename = 'retrieval_ann_'+self.ymlv+'_'+filename+'.csv'
-        df_final.to_csv(os.path.join(self.ymlp, filename), index=False, sep=",", decimal='.')
+        #filename=self.file[21:58]
+        filename = 'retrieval_SCR01_'+self.tver+'_'+self.ymlv+'.csv'
+        df_final.to_csv(os.path.join(self.path, filename), index=False, sep=",", decimal='.')
 
         return df_final
