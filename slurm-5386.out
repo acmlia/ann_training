@@ -1,0 +1,18 @@
+Running on host node004
+Time is Seg Abr 22 01:14:16 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 5386
+This job runs on the following machines:
+node004
+Running /home/david/vp368cpu/bin/python /home/david/git-repos/ann_training/main_ann_30.py
+Traceback (most recent call last):
+  File "/home/david/git-repos/ann_training/main_ann_30.py", line 9, in <module>
+    from src.training_ann_30 import Training
+  File "/home/david/git-repos/ann_training/src/training_ann_30.py", line 125
+    model.add(Dense(51, input_dim=17, activation='linear')))
+                                                           ^
+SyntaxError: invalid syntax
+
+real	0m1.008s
+user	0m1.259s
+sys	0m1.758s
