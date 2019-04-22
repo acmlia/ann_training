@@ -213,7 +213,7 @@ class Training:
                                    '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89']]
 
         colunas = ['10V', '10H', '18V', '18H', '36V', '36H', '89V', '89H',
-                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36']
+                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89']
 
         scaler = StandardScaler()
 
@@ -285,7 +285,7 @@ class Training:
         # Now split the dataset into a training set and a test set.
         # We will use the test set in the final evaluation of our model.
 
-        train_dataset = dataset.sample(frac=0.8, random_state=0)
+        train_dataset = dataset.sample(frac=0.8, random_state=7)
         test_dataset = dataset.drop(train_dataset.index)
 
         # ------------------------------------------------------------------------------
