@@ -16,7 +16,7 @@ workdir="/home/david/git-repos/ann_training"
 application="$(which python)"
 
 # Run options for the application
-options="$workdir/main_ann_23.py"
+options="$workdir/main_ann_24.py"
 
 ###############################################################
 ### You should not have to change anything below this line ####
