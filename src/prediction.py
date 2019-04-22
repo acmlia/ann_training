@@ -22,8 +22,7 @@ from sklearn.decomposition import PCA
 from collections import Counter
 from src.meteoro_skills import CategoricalScores
 from src.meteoro_skills import ContinuousScores
-
-
+from keras.models import load_model
 
 import tensorflow as tf
 from tensorflow import keras
@@ -213,20 +212,17 @@ class Prediction:
         df_orig = pd.read_csv(os.path.join(self.path, self.file), sep=',', decimal='.')
 
         df_input = df_orig.loc[:, ['10V', '10H', '18V', '18H', '36V', '36H', '89V', '89H',
-                                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', '89VH',
-                                   'lat']]
+                                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', '89VH']]
 
         colunas = ['10V', '10H', '18V', '18H', '36V', '36H', '89V', '89H',
-                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', '89VH',
-                   'lat']
+                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', '89VH']
 
         scaler = StandardScaler()
 
         normed_input = scaler.fit_transform(df_input)
         df_normed_input = pd.DataFrame(normed_input[:],
                                        columns=colunas)
-        ancillary = df_normed_input.loc[:, ['183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', '89VH',
-                                            'lat']]
+        ancillary = df_normed_input.loc[:, ['183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', '89VH']]
         # regions=df_orig.loc[:,['R1','R2','R3','R4','R5']]
         # ------------------------------------------------------------------------------
         # Choosing the number of components:
@@ -236,54 +232,55 @@ class Prediction:
 
         # ------------------------------------------------------------------------------
         # Verifying the number of components that most contribute:
-        pca = PCA()
+        pca = self.PCA
         pca1 = pca.fit(TB1)
-        plt.plot(np.cumsum(pca1.explained_variance_ratio_))
-        plt.xlabel('Number of components for TB1')
-        plt.ylabel('Cumulative explained variance');
-        #plt.savefig(self.path_fig + self.tver + '_PCA_TB1.png')
-        # ---
-        pca_trans1 = PCA(n_components=2)
-        pca1 = pca_trans1.fit(TB1)
-        TB1_transformed = pca_trans1.transform(TB1)
-        print("original shape:   ", TB1.shape)
-        print("transformed shape:", TB1_transformed.shape)
+        TB1_pca = pca1.transform(TB1)
+#        plt.plot(np.cumsum(pca1.explained_variance_ratio_))
+#        plt.xlabel('Number of components for TB1')
+#        plt.ylabel('Cumulative explained variance');
+#        plt.savefig(self.path_fig + self.version + 'PCA_TB1.png')
+#        # ---
+#        pca_trans1 = PCA(n_components=2)
+#        pca1 = pca_trans1.fit(TB1)
+#        #TB1_transformed = pca_trans1.transform(TB1)
+        #print("original shape:   ", TB1.shape)
+        #print("transformed shape:", TB1_transformed.shape)
         # ------------------------------------------------------------------------------
-        pca = PCA()
         pca2 = pca.fit(TB2)
-        plt.plot(np.cumsum(pca2.explained_variance_ratio_))
-        plt.xlabel('Number of components for TB2')
-        plt.ylabel('Cumulative explained variance');
-        #plt.savefig(self.path_fig + self.tver + 'PCA_TB2.png')
-        # ---
-        pca_trans2 = PCA(n_components=2)
-        pca2 = pca_trans2.fit(TB2)
-        TB2_transformed = pca_trans2.transform(TB2)
-        print("original shape:   ", TB2.shape)
-        print("transformed shape:", TB2_transformed.shape)
+        TB2_pca = pca2.transform(TB2)
+#        plt.plot(np.cumsum(pca2.explained_variance_ratio_))
+#        plt.xlabel('Number of components for TB2')
+#        plt.ylabel('Cumulative explained variance');
+#        plt.savefig(self.path_fig + self.version + 'PCA_TB2.png')
+#        # ---
+#        pca_trans2 = PCA(n_components=2)
+#        pca2 = pca_trans2.fit(TB2)
+#        #TB2_transformed = pca_trans2.transform(TB2)
+#        print("original shape:   ", TB2.shape)
+#        print("transformed shape:", TB2_transformed.shape)
         # ------------------------------------------------------------------------------
         # JOIN THE TREATED VARIABLES IN ONE SINGLE DATASET AGAIN:
 
-        PCA1 = pd.DataFrame(TB1_transformed[:],
-                            columns=['pca1_1', 'pca_2'])
-        PCA2 = pd.DataFrame(TB2_transformed[:],
-                            columns=['pca2_1', 'pca2_2'])
+        PCA1 = pd.DataFrame(TB1_pca,
+                            columns=['pca1_1', 'pca1_2', 'pca1_3', 'pca1_4'])
+        PCA2 = pd.DataFrame(TB2_pca,
+                            columns=['pca2_1', 'pca2_2', 'pca2_3', 'pca2_4', 'pca2_5', 'pca2_6'])
 
         dataset = PCA1.join(PCA2, how='right')
         dataset = dataset.join(ancillary, how='right')
         dataset = dataset.join(df_orig.loc[:, ['sfcprcp']], how='right')
-        dataset = dataset.join(df_orig.loc[:, ['SCR01']], how='right')
         # ------------------------------------------------------------------------------
-        #dataset = self.keep_interval(0.1, 75.0, dataset, 'sfcprcp')
+
+#        dataset = self.keep_interval(0.2, 60, dataset, 'sfcprcp')
         
 #        NaN_pixels = np.where((dataset['sfcprcp'] != -9999.0))
 #        dataset = dataset.iloc[NaN_pixels]
         dataset = dataset.dropna()
-        SCR_pixels = np.where((dataset['SCR01'] == 1))
+        SCR_pixels = np.where((df_orig['SCR01'] == 1))
         dataset = dataset.iloc[SCR_pixels]
         dataset_index=dataset.index.values
         
-        SCR = dataset.pop('SCR01')
+        #SCR = dataset.pop('SCR01')
         y_true = dataset.pop('sfcprcp')
 
         x_normed = dataset.values
