@@ -121,7 +121,6 @@ class Training:
          model(Sequential and Dense).
         '''
         model = Sequential()
-        model = Sequential()
         model.add(Dense(51, input_dim=17, activation='linear'))
         model.add(Dense(10, activation='linear'))
         model.add(Dense(1))
