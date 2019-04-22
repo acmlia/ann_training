@@ -1,0 +1,23 @@
+Running on host node004
+Time is Seg Abr 22 02:55:17 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 5390
+This job runs on the following machines:
+node004
+Running /home/david/vp368cpu/bin/python /home/david/git-repos/ann_training/main_ann_32.py
+Using TensorFlow backend.
+WARNING:tensorflow:From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+22/04/2019 02:55:57 - From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+22/04/2019 02:55:57 - From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-04-22 02:55:57.588234: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200180000 Hz
+2019-04-22 02:55:57.589375: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x3fd94160 executing computations on platform Host. Devices:
+2019-04-22 02:55:57.589413: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>

@@ -50,7 +50,7 @@ def main() -> object:
     Retrieval = Training(random_seed=7,
                    run_prefix='ann_32_',
                    version='ann_32',
-                   version_nickname='_ouliers_c1_90pct',
+                   version_nickname='_ouliers_c1_90pct_c2_90pct',
                    csv_entry='train_data_11m_outliers_c1_90pct_c2_90pct.csv',
                    csv_path='/home/david/DATA/',
                    figure_path=git_dir+'ann_training/',
