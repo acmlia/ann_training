@@ -85,13 +85,22 @@ def main() -> object:
 # PREDICTION CONFIGURATIONS:
 #------------------------------------------------------------------------------
     pred = Prediction(random_seed=7,
-                      version='ann_24',
+                      version='ann_28',
                       file_csv='regional_all_input_SCR01_orbita_4299_30112014.csv',
                       path_csv='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
                       figure_path='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
-                      yaml_version='ann_24',
+                      yaml_version='ann_28',
                       yaml_file='final_',
                       yaml_path='/media/DATA/tmp/git-repositories/ann_training/models/')
+
+#    pred = Prediction(random_seed=7,
+#                      version='ann_25',
+#                      file_csv='regional_all_input_SCR01_orbita_4299_30112014.csv',
+#                      path_csv='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
+#                      figure_path='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
+#                      yaml_version='ann_25',
+#                      yaml_file='final_',
+#                      yaml_path='/media/DATA/tmp/git-repositories/ann_training/models/')
 
 #------------------------------------------------------------------------------
 # CALL THE PROGRAMS:
