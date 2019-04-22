@@ -122,8 +122,8 @@ class Training:
         '''
         model = Sequential()
         model.add(GaussianNoise(0.01, input_shape=(input_size,)))
-        model.add(Dense(33, activation='linear'))
-        model.add(Dense(11, activation='linear'))
+        model.add(Dense(51, activation='linear'))
+        model.add(Dense(10, activation='linear'))
         model.add(Dense(1))
         model.compile(loss='mean_squared_error',
                       optimizer='adam',
