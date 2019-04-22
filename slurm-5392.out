@@ -1,0 +1,40 @@
+Running on host node005
+Time is Seg Abr 22 16:56:10 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 5392
+This job runs on the following machines:
+node005
+Running /home/david/vp368cpu/bin/python /home/david/git-repos/ann_training/main_ann_34.py
+Using TensorFlow backend.
+TF version 1.13.1
+Traceback (most recent call last):
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/internals/managers.py", line 1651, in create_block_manager_from_blocks
+    placement=slice(0, len(axes[0])))]
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/internals/blocks.py", line 3095, in make_block
+    return klass(values, ndim=ndim, placement=placement)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/internals/blocks.py", line 87, in __init__
+    '{mgr}'.format(val=len(self.values), mgr=len(self.mgr_locs)))
+ValueError: Wrong number of items passed 16, placement implies 15
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/david/git-repos/ann_training/main_ann_34.py", line 268, in <module>
+    main()
+  File "/home/david/git-repos/ann_training/main_ann_34.py", line 108, in main
+    Retrieval.autoExecReg()
+  File "/home/david/git-repos/ann_training/src/training_ann_34.py", line 222, in autoExecReg
+    columns=colunas)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/frame.py", line 424, in __init__
+    copy=copy)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/internals/construction.py", line 167, in init_ndarray
+    return create_block_manager_from_blocks([values], [columns, index])
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/internals/managers.py", line 1660, in create_block_manager_from_blocks
+    construction_error(tot_items, blocks[0].shape[1:], axes, e)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/internals/managers.py", line 1691, in construction_error
+    passed, implied))
+ValueError: Shape of passed values is (3259296, 16), indices imply (3259296, 15)
+
+real	0m39.418s
+user	0m34.670s
+sys	0m5.922s
