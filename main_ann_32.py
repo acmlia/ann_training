@@ -6,12 +6,12 @@ import os, sys
 import pandas as pd
 import numpy as np
 
-#from src.training_ann_24 import Training
+from src.training_ann_32 import Training
 #from src.validation import Validation
 #from src.graphics_builder import GraphicsBuilder
 #from src.preprocess import Preprocess
 #from src.pretraining import PreTraining
-from src.prediction_ann_30 import Prediction
+#from src.prediction_ann_3 import Prediction
 #import src.meteoro_skills
 
 
@@ -34,7 +34,7 @@ def main() -> object:
     # | Code starts here :) |
     # '---------------------'
 
-#    git_dir = '/home/david/git-repos/'
+    git_dir = '/home/david/git-repos/'
 #    git_dir = '/media/DATA/tmp/git-repositories/'
 #------------------------------------------------------------------------------
 # SCREENING CONFIGURATIONS:
@@ -47,29 +47,29 @@ def main() -> object:
 #------------------------------------------------------------------------------
 # RETRIEVAL CONFIGURATIONS:
 #------------------------------------------------------------------------------
-#    Retrieval = Training(random_seed=7,
-#                   run_prefix='ann_1_',
-#                   version='ann_1',
-#                   version_nickname='_OK_TAG_',
-#                   csv_entry='yearly_clip_br_var2d_OK_TAG.csv',
-#                   csv_path='/home/david/DATA/',
-#                   figure_path=git_dir+'ann_training/',
-#                   model_out_path=git_dir+'ann_training/',
-#                   model_out_name='final_ann_1')
+    Retrieval = Training(random_seed=7,
+                   run_prefix='ann_32_',
+                   version='ann_32',
+                   version_nickname='_ouliers_c1_90pct',
+                   csv_entry='train_data_11m_outliers_c1_90pct_c2_90pct.csv',
+                   csv_path='/home/david/DATA/',
+                   figure_path=git_dir+'ann_training/',
+                   model_out_path=git_dir+'ann_training/',
+                   model_out_name='final_ann_32')
 #
 #    Retrieval = Training(random_seed=7,
-#                   run_prefix='ann_22_',
-#                   version='ann_22',
-#                   version_nickname='_11m_outliers_',
-#                   csv_entry='train_data_11m_outliers.csv',
+#                   run_prefix='ann_20_',
+#                   version='ann_20',
+#                   version_nickname='_11m_',
+#                   csv_entry='train_data_11m.csv',
 #                   csv_path='/media/DATA/tmp/git-repositories/brain/output/',
 #                   figure_path=git_dir+'ann_training/',
 #                   model_out_path=git_dir+'ann_training/',
-#                   model_out_name='final_ann_22')
+#                   model_out_name='final_ann_20')
 #------------------------------------------------------------------------------
 # VALIDATION CONFIGURATIONS:
 #------------------------------------------------------------------------------
-#    hdf5 = Validation(path_hdf5='/media/DATA/tmp/git-repositories/validation/ORBITAS/')
+#    hdf5 = Validation(path_hdf5='/media/DATA/tmp/git-repositories/validation/HDF5/20181123/')
 
 #    vld = Validation(yaml_version='R1',
 #                     yaml_path=git_dir+'redes_finais/retrieval/output_models/',
@@ -84,31 +84,23 @@ def main() -> object:
 #------------------------------------------------------------------------------
 # PREDICTION CONFIGURATIONS:
 #------------------------------------------------------------------------------
-    pred = Prediction(random_seed=7,
-                      version='ann_30',
-                      file_csv='regional_all_input_SCR01_orbita_4299_30112014.csv',
-                      path_csv='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
-                      figure_path='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
-                      yaml_version='ann_30',
-                      yaml_file='final_',
-                      yaml_path='/media/DATA/tmp/git-repositories/ann_training/models/')
-
 #    pred = Prediction(random_seed=7,
-#                      version='NOV14',
-#                      file_csv='regional_2014-11_clip-br_all_input_SCR01.csv',
-#                      path_csv='/media/DATA/tmp/git-repositories/validation/NOV_2014/',
-#                      figure_path='/media/DATA/tmp/git-repositories/validation/NOV_2014/',
-#                      yaml_version='ann_30',
+#                      version='ann_3',
+#                      file_csv='validation_all_atrib_SCR_pklmodel_20181123-S181431-E194705.026915.V05A.csv',
+#                      path_csv='/media/DATA/tmp/git-repositories/validation/HDF5/20181123/clip/',
+#                      figure_path='/media/DATA/tmp/git-repositories/ann_training/',
+#                      yaml_version='ann_3',
 #                      yaml_file='final_',
-#                      yaml_path='/media/DATA/tmp/git-repositories/ann_training/models/')
+#                      yaml_path='/media/DATA/tmp/git-repositories/ann_training/')
+
 
 #------------------------------------------------------------------------------
 # CALL THE PROGRAMS:
 #------------------------------------------------------------------------------
-#    Retrieval.autoExecReg()
+    Retrieval.autoExecReg()
 #    Screening.autoExecClass()
 #    pred.PredictScreening()
-    pred.PredictRetrieval()
+#    pred.PredictRetrieval()
 #    vld.AddAttributesMerge()
 #    hdf5.read_hdf5_1CGMI()
 #    hdf5.read_hdf5_2AGPROF()
@@ -217,12 +209,12 @@ def main() -> object:
     #                           classe=c, chart_title='Box Plot 89V - Yearly - '+region+c,
     #                           output_file_name=os.path.join(path, filename))
 #   # ------------------------------------------------------------------------------
-#     Plotting Box Plot by month and region:
-#    path = '/media/DATA/tmp/git-repositories/brain/output/'
+    # Plotting Box Plot by month and region:
+#    path = rede_pp.IN_CSV_LIST
 #    for file in os.listdir(path):
 #        if os.path.isfile(path+file):
 #            print('elemento da pasta: {}'.format(file))
-#            df = pd.read_csv(os.path.join(path, file), sep=',', decimal='.')
+#            df = rede_pp.LoadCSV(path, file)
 #            classe = ['C1', 'C2', 'C3', 'C4']
 #            idx1= np.where((df['CLASSE'] == classe[0]))
 #            idx2= np.where((df['CLASSE'] == classe[1]))
@@ -232,17 +224,17 @@ def main() -> object:
 #            size_idx2 = str(len(idx2[0]))
 #            size_idx3 = str(len(idx3[0]))
 #            size_idx4 = str(len(idx4[0]))
-#            region = 'Brazil'
-#            filename = 'boxplot_total_11m_sfcprcp_'+region+'_by_classes.html'
+#            region = file[12:14]
+#            filename = 'boxplot_yearly_PCT89_'+region+'_by_classes.html'
 #            #filename = 'boxplot_'+month+'_'+region+'.hmtl'
 #            gb = GraphicsBuilder()
-#            gb.boxplot_per_classe(dataframe=df, yvalue1=df['sfcprcp'].iloc[idx1], yvalue2=df['sfcprcp'].iloc[idx2],
-#                                  yvalue3=df['sfcprcp'].iloc[idx3], yvalue4=df['sfcprcp'].iloc[idx4],
+#            gb.boxplot_per_classe(dataframe=df, yvalue1=df['PCT89'].iloc[idx1], yvalue2=df['PCT89'].iloc[idx2],
+#                                  yvalue3=df['PCT89'].iloc[idx3], yvalue4=df['PCT89'].iloc[idx4],
 #                                  ytitle1='Pixels - C1', ytitle2='Pixels - C2', ytitle3='Pixels - C3',
 #                                  ytitle4='Pixels - C4', size_idx1=size_idx1, size_idx2=size_idx2,
 #                                  size_idx3=size_idx3, size_idx4=size_idx4,
-#                                  chart_title='Box Plot sfcprcp- (DB 11m) - '+region+ ' by classes',
-#                                  output_file_name=os.path.join(path, filename))
+#                                  chart_title='Box Plot PCT89 - Yearly - '+region+ ' by classes',
+#                                  output_file_name=os.path.join(OUT_CSV_LIST, filename))
   # ------------------------------------------------------------------------------    #
     # regioes = ['R1', 'R2', 'R3', 'R4', 'R5']
     # for r in regioes:
