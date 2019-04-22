@@ -6,12 +6,12 @@ import os, sys
 import pandas as pd
 import numpy as np
 
-from src.training_ann_32 import Training
+from src.training_ann_33 import Training
 #from src.validation import Validation
 #from src.graphics_builder import GraphicsBuilder
 #from src.preprocess import Preprocess
 #from src.pretraining import PreTraining
-from src.prediction_ann_32 import Prediction
+#from src.prediction_ann_32 import Prediction
 #import src.meteoro_skills
 
 
@@ -47,15 +47,15 @@ def main() -> object:
 #------------------------------------------------------------------------------
 # RETRIEVAL CONFIGURATIONS:
 #------------------------------------------------------------------------------
-#    Retrieval = Training(random_seed=7,
-#                   run_prefix='ann_32_',
-#                   version='ann_32',
-#                   version_nickname='_ouliers_c1_90pct_c2_90pct',
-#                   csv_entry='train_data_11m_outliers_c1_90pct_c2_90pct.csv',
-#                   csv_path='/home/david/DATA/',
-#                   figure_path=git_dir+'ann_training/',
-#                   model_out_path=git_dir+'ann_training/',
-#                   model_out_name='final_ann_32')
+    Retrieval = Training(random_seed=7,
+                   run_prefix='ann_33_',
+                   version='ann_33',
+                   version_nickname='_outliers',
+                   csv_entry='train_data_11m_outliers.csv',
+                   csv_path='/home/david/DATA/',
+                   figure_path=git_dir+'ann_training/',
+                   model_out_path=git_dir+'ann_training/',
+                   model_out_name='final_ann_33')
 #
 #    Retrieval = Training(random_seed=7,
 #                   run_prefix='ann_20_',
@@ -83,15 +83,15 @@ def main() -> object:
 #                     file_csv='validation_dataframe_20181123-S181431-E194705.026915.V05A.csv')
 #------------------------------------------------------------------------------
 # PREDICTION CONFIGURATIONS:
-#------------------------------------------------------------------------------
-    pred = Prediction(random_seed=7,
-                      version='orbita_4299_ann_32',
-                      file_csv='regional_all_input_SCR01_orbita_4299_30112014.csv',
-                      path_csv='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
-                      figure_path='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
-                      yaml_version='ann_32',
-                      yaml_file='final_',
-                      yaml_path='/media/DATA/tmp/git-repositories/ann_training/models/')
+##------------------------------------------------------------------------------
+#    pred = Prediction(random_seed=7,
+#                      version='orbita_4299_ann_32',
+#                      file_csv='regional_all_input_SCR01_orbita_4299_30112014.csv',
+#                      path_csv='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
+#                      figure_path='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
+#                      yaml_version='ann_32',
+#                      yaml_file='final_',
+#                      yaml_path='/media/DATA/tmp/git-repositories/ann_training/models/')
 
 #    pred = Prediction(random_seed=7,
 #                      version='NOV14',
@@ -105,10 +105,10 @@ def main() -> object:
 #------------------------------------------------------------------------------
 # CALL THE PROGRAMS:
 #------------------------------------------------------------------------------
-#    Retrieval.autoExecReg()
+    Retrieval.autoExecReg()
 #    Screening.autoExecClass()
 #    pred.PredictScreening()
-    pred.PredictRetrieval()
+#    pred.PredictRetrieval()
 #    vld.AddAttributesMerge()
 #    hdf5.read_hdf5_1CGMI()
 #    hdf5.read_hdf5_2AGPROF()
