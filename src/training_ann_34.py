@@ -154,8 +154,8 @@ class Training:
 
         # Split the dataset in test and train samples:
         x_train, x_test, y_train, y_test = train_test_split(x_normalized,
-                                                            y_arr, test_size=0.10,
-                                                            random_state=101)
+                                                            y_arr, test_size=0.20,
+                                                            random_state=7)
 
         # Create the instance for KerasRegressor:
         model=self.build_class_model()
