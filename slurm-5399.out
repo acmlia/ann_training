@@ -1,0 +1,111 @@
+Running on host node004
+Time is Ter Abr 23 12:11:26 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 5399
+This job runs on the following machines:
+node004
+Running /home/david/vp368cpu/bin/python /home/david/git-repos/ann_training/main_ann_36.py
+Using TensorFlow backend.
+WARNING:tensorflow:From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+23/04/2019 12:12:04 - From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+WARNING:tensorflow:From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+23/04/2019 12:12:04 - From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/math_ops.py:3066: to_int32 (from tensorflow.python.ops.math_ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Use tf.cast instead.
+2019-04-23 12:12:05.062168: I tensorflow/core/platform/profile_utils/cpu_utils.cc:94] CPU Frequency: 2200180000 Hz
+2019-04-23 12:12:05.063271: I tensorflow/compiler/xla/service/service.cc:150] XLA service 0x719a7e0 executing computations on platform Host. Devices:
+2019-04-23 12:12:05.063310: I tensorflow/compiler/xla/service/service.cc:158]   StreamExecutor device (0): <undefined>, <undefined>
+23/04/2019 13:04:45 - update_title_pos
+23/04/2019 13:04:45 - findfont: Matching :family=sans-serif:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=STIXGeneral:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXGeneral ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneral.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=STIXGeneral:style=italic:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXGeneral ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralItalic.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=STIXGeneral:style=normal:variant=normal:weight=bold:stretch=normal:size=10.0 to STIXGeneral ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/STIXGeneralBol.ttf') with score of 0.000000.
+23/04/2019 13:04:45 - findfont: Matching :family=STIXNonUnicode:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXNonUnicode ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUni.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=STIXNonUnicode:style=italic:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXNonUnicode ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniIta.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=STIXNonUnicode:style=normal:variant=normal:weight=bold:stretch=normal:size=10.0 to STIXNonUnicode ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/STIXNonUniBol.ttf') with score of 0.000000.
+23/04/2019 13:04:45 - findfont: Matching :family=STIXSizeOneSym:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXSizeOneSym ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizOneSymReg.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=STIXSizeTwoSym:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXSizeTwoSym ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizTwoSymReg.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=STIXSizeThreeSym:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXSizeThreeSym ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizThreeSymReg.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=STIXSizeFourSym:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXSizeFourSym ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFourSymReg.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=STIXSizeFiveSym:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to STIXSizeFiveSym ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/STIXSizFiveSymReg.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=cmsy10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmsy10 ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/cmsy10.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=cmr10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmr10 ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/cmr10.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=cmtt10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmtt10 ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/cmtt10.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=cmmi10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmmi10 ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/cmmi10.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=cmb10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmb10 ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/cmb10.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=cmss10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmss10 ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/cmss10.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=cmex10:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to cmex10 ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/cmex10.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=DejaVu Sans:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=DejaVu Sans:style=italic:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Oblique.ttf') with score of 0.150000.
+23/04/2019 13:04:45 - findfont: Matching :family=DejaVu Sans:style=normal:variant=normal:weight=bold:stretch=normal:size=10.0 to DejaVu Sans ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSans-Bold.ttf') with score of 0.000000.
+23/04/2019 13:04:45 - findfont: Matching :family=DejaVu Sans Mono:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans Mono ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansMono.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - findfont: Matching :family=DejaVu Sans Display:style=normal:variant=normal:weight=normal:stretch=normal:size=10.0 to DejaVu Sans Display ('/home/david/vp368cpu/lib/python3.6/site-packages/matplotlib/mpl-data/fonts/ttf/DejaVuSansDisplay.ttf') with score of 0.050000.
+23/04/2019 13:04:45 - update_title_pos
+23/04/2019 13:07:32 - update_title_pos
+23/04/2019 13:07:32 - update_title_pos
+TF version 1.13.1
+Print train statistics               pca1_1         pca1_2  ...           89VH        sfcprcp
+count  222944.000000  222944.000000  ...  222944.000000  222944.000000
+mean        0.001625       0.000194  ...       0.001640       2.097470
+std         1.920312       0.488168  ...       1.001264       3.634174
+min        -5.076468      -4.617611  ...      -1.876565       0.200000
+25%        -1.099862      -0.210103  ...      -0.763999       0.421000
+50%        -0.315493       0.014092  ...      -0.387629       0.920000
+75%         0.705953       0.226922  ...       0.604995       2.272000
+max        24.233170       5.453064  ...       7.421015      59.960000
+
+[8 rows x 18 columns]
+Print test statistics               pca1_1         pca1_2  ...           89VH        sfcprcp
+count  222944.000000  222944.000000  ...  222944.000000  222944.000000
+mean        0.001625       0.000194  ...       0.001640       2.097470
+std         1.920312       0.488168  ...       1.001264       3.634174
+min        -5.076468      -4.617611  ...      -1.876565       0.200000
+25%        -1.099862      -0.210103  ...      -0.763999       0.421000
+50%        -0.315493       0.014092  ...      -0.387629       0.920000
+75%         0.705953       0.226922  ...       0.604995       2.272000
+max        24.233170       5.453064  ...       7.421015      59.960000
+
+[8 rows x 18 columns]
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+gaussian_noise_1 (GaussianNo (None, 17)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 51)                918       
+_________________________________________________________________
+dense_2 (Dense)              (None, 10)                520       
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 11        
+=================================================================
+Total params: 1,449
+Trainable params: 1,449
+Non-trainable params: 0
+_________________________________________________________________
+
+....................................................................................................
+....................................................................................................
+....................................................................................................
+....................................................................................................
+....................................................................................................dict_keys(['val_loss', 'val_mean_absolute_error', 'val_mean_squared_error', 'loss', 'mean_absolute_error', 'mean_squared_error'])
+
+..........................Testing set Mean Abs Error:  1.13 sfcprcp
+converting arrays to text files
+Text file saved!
+Traceback (most recent call last):
+  File "/home/david/git-repos/ann_training/main_ann_36.py", line 268, in <module>
+    main()
+  File "/home/david/git-repos/ann_training/main_ann_36.py", line 108, in main
+    Retrieval.autoExecReg()
+  File "/home/david/git-repos/ann_training/src/training_ann_36.py", line 393, in autoExecReg
+    plt.scatter(y_test, test_predictions)
+NameError: name 'test_predictions' is not defined
+
+real	56m7.956s
+user	120m0.761s
+sys	22m4.331s

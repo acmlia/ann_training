@@ -318,8 +318,8 @@ class Training:
 
         EPOCHS = 500
 
-        history = model.fit(x_train, y_train,epoc
-                            hs=EPOCHS, validation_split=0.2, verbose=0,
+        history = model.fit(x_train, y_train,
+                            epochs=EPOCHS, validation_split=0.2, verbose=0,
                             callbacks=[PrintDot()])
         print(history.history.keys())
 

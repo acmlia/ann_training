@@ -1,0 +1,18 @@
+Running on host node004
+Time is Seg Abr 22 22:06:57 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 5396
+This job runs on the following machines:
+node004
+Running /home/david/vp368cpu/bin/python /home/david/git-repos/ann_training/main_ann_35.py
+Traceback (most recent call last):
+  File "/home/david/git-repos/ann_training/main_ann_35.py", line 9, in <module>
+    from src.training_ann_35 import Training
+  File "/home/david/git-repos/ann_training/src/training_ann_35.py", line 322
+    hs=EPOCHS, validation_split=0.2, verbose=0,
+     ^
+SyntaxError: invalid syntax
+
+real	0m1.070s
+user	0m1.309s
+sys	0m1.761s
