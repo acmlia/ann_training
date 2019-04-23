@@ -390,7 +390,7 @@ class Training:
         print("Text file saved!")
 
         plt.figure()
-        plt.scatter(y_test, test_predictions)
+        plt.scatter(y_test, y_pred )
         plt.xlabel('True Values [sfcprcp]')
         plt.ylabel('Predictions [sfcprcp]')
         plt.axis('equal')
@@ -404,7 +404,7 @@ class Training:
 
         #------------------------------------------------------------------------------
         ax = plt.gca()
-        ax.plot(y_test,test_predictions, 'o', c='blue', alpha=0.07, markeredgecolor='none')
+        ax.plot(y_test, y_pred, 'o', c='blue', alpha=0.07, markeredgecolor='none')
         ax.set_yscale('log')
         ax.set_xscale('log')
         ax.set_xlabel('True Values [sfcprcp]')
@@ -418,7 +418,7 @@ class Training:
         # It looks like our model predicts reasonably well.
         # Let's take a look at the error distribution.
 
-        error = test_predictions - y_test
+        error = y_pred - y_test
         plt.hist(error, bins=25)
         plt.xlabel("Prediction Error [sfcprcp]")
         plt.ylabel("Count")
@@ -429,7 +429,7 @@ class Training:
         # ------------------------------------------------------------------------------
         # HISTROGRAM 2D
 
-        plt.hist2d(y_test, test_predictions, cmin=1, bins=(50, 50), cmap=plt.cm.jet, range=np.array([(0.2, 110), (0.2, 110)]))
+        plt.hist2d(y_test, y_pred, cmin=1, bins=(50, 50), cmap=plt.cm.jet, range=np.array([(0.2, 110), (0.2, 110)]))
         plt.axis('equal')
         plt.axis('square')
         plt.plot([0, 100], [0, 100], ls="--", c=".3")
