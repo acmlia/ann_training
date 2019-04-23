@@ -122,7 +122,7 @@ class Training:
         '''
         model = Sequential()
         model.add(GaussianNoise(0.01, input_shape=(input_size,)))
-        model.add(Dense(48, activation='relu'))
+        model.add(Dense(51, activation='relu'))
         model.add(Dense(10, activation='linear'))
         model.add(Dense(1))
         model.compile(loss='mean_squared_error',
@@ -210,20 +210,20 @@ class Training:
         df_orig = pd.read_csv(os.path.join(self.path, self.file), sep=',', decimal='.')
 
         df_input = df_orig.loc[:, ['10V', '10H', '18V', '18H', '36V', '36H', '89V', '89H',
-                                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', 'sfcprcp']]
-       
+                                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', '89VH', 'sfcprcp']]
+
+        # ------------------------------------------------------------------------------
         df_input = self.keep_interval(0.2, 60, df_input, 'sfcprcp')
         y_true = df_input.pop('sfcprcp')
 
         colunas = ['10V', '10H', '18V', '18H', '36V', '36H', '89V', '89H',
-                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89']
-
+                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', '89VH']
+        # ------------------------------------------------------------------------------
         scaler = StandardScaler()
 
         x_norm = scaler.fit_transform(df_input)
-        df_x_norm = pd.DataFrame(x_norm[:],
-                                       columns=colunas)
-        ancillary = df_x_norm.loc[:, ['183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89']]
+        df_x_norm = pd.DataFrame(x_norm[:], index = df_input.index,columns=colunas)
+        ancillary = df_x_norm.loc[:, ['183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', '89VH']]
 
         # ------------------------------------------------------------------------------
         # Choosing the number of components:
@@ -242,15 +242,17 @@ class Training:
         # ------------------------------------------------------------------------------
         # JOIN THE TREATED VARIABLES IN ONE SINGLE DATASET AGAIN:
 
-        PCA1 = pd.DataFrame(TB1_pca,
+        PCA1 = pd.DataFrame(TB1_pca,index = df_input.index,
                             columns=['pca1_1', 'pca1_2', 'pca1_3', 'pca1_4'])
-        PCA2 = pd.DataFrame(TB2_pca,
+        PCA2 = pd.DataFrame(TB2_pca, index = df_input.index,
                             columns=['pca2_1', 'pca2_2', 'pca2_3', 'pca2_4', 'pca2_5', 'pca2_6'])
 
         dataset = PCA1.join(PCA2, how='right')
         dataset = dataset.join(ancillary, how='right')
-        sfcprcp = pd.DataFrame(y_true, columns=['sfcprcp'])
-        dataset = dataset.join(sfcprcp, how='right')
+        sfcprcp = pd.DataFrame(y_true, df_input.index, columns=['sfcprcp'])
+        dataset = dataset.join(sfcprcp, how='right') 
+        dataset = dataset.dropna()
+
         # ------------------------------------------------------------------------------
         # ----------------------------------------
         # SUBSET BY SPECIFIC CLASS (UNDERSAMPLING)
@@ -277,9 +279,10 @@ class Training:
 
         # ------------------------------------------------------------------------------
         # Also look at the overall statistics:
-        train_stats = x_train.describe()
-        train_stats.pop("sfcprcp")
-        train_stats = train_stats.transpose()
+        x_train_stats = x_train.describe()
+        print('Print train statistics', x_train_stats)
+        x_test_stats = x_train.describe()
+        print('Print test statistics', x_test_stats)
 
         # ------------------------------------------------------------------------------
         # Split features from labels:
