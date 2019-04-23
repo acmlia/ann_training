@@ -211,51 +211,34 @@ class Training:
 
         df_input = df_orig.loc[:, ['10V', '10H', '18V', '18H', '36V', '36H', '89V', '89H',
                                    '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', 'sfcprcp']]
+       
+        df_input = self.keep_interval(0.2, 60, df_input, 'sfcprcp')
+        y_true = df_input.pop('sfcprcp')
 
         colunas = ['10V', '10H', '18V', '18H', '36V', '36H', '89V', '89H',
-                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89', 'sfcprcp']
+                   '166V', '166H', '183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89']
 
         scaler = StandardScaler()
 
-        normed_input = scaler.fit_transform(df_input)
-        df_normed_input = pd.DataFrame(normed_input[:],
+        x_norm = scaler.fit_transform(df_input)
+        df_x_norm = pd.DataFrame(x_norm[:],
                                        columns=colunas)
-        ancillary = df_normed_input.loc[:, ['183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89']]
-        # regions=df_orig.loc[:,['R1','R2','R3','R4','R5']]
+        ancillary = df_x_norm.loc[:, ['183VH', 'sfccode', 'T2m', 'tcwv', 'PCT36', 'PCT89']]
+
         # ------------------------------------------------------------------------------
         # Choosing the number of components:
 
-        TB1 = df_normed_input.loc[:, ['10V', '10H', '18V', '18H']]
-        TB2 = df_normed_input.loc[:, ['36V', '36H', '89V', '89H', '166V', '166H']]
+        TB1 = df_x_norm.loc[:, ['10V', '10H', '18V', '18H']]
+        TB2 = df_x_norm.loc[:, ['36V', '36H', '89V', '89H', '166V', '166H']]
 
         # ------------------------------------------------------------------------------
         # Verifying the number of components that most contribute:
         pca = self.PCA
         pca1 = pca.fit(TB1)
         TB1_pca = pca1.transform(TB1)
-#        plt.plot(np.cumsum(pca1.explained_variance_ratio_))
-#        plt.xlabel('Number of components for TB1')
-#        plt.ylabel('Cumulative explained variance');
-#        plt.savefig(self.path_fig + self.version + 'PCA_TB1.png')
-#        # ---
-#        pca_trans1 = PCA(n_components=2)
-#        pca1 = pca_trans1.fit(TB1)
-#        #TB1_transformed = pca_trans1.transform(TB1)
-        #print("original shape:   ", TB1.shape)
-        #print("transformed shape:", TB1_transformed.shape)
         # ------------------------------------------------------------------------------
         pca2 = pca.fit(TB2)
         TB2_pca = pca2.transform(TB2)
-#        plt.plot(np.cumsum(pca2.explained_variance_ratio_))
-#        plt.xlabel('Number of components for TB2')
-#        plt.ylabel('Cumulative explained variance');
-#        plt.savefig(self.path_fig + self.version + 'PCA_TB2.png')
-#        # ---
-#        pca_trans2 = PCA(n_components=2)
-#        pca2 = pca_trans2.fit(TB2)
-#        #TB2_transformed = pca_trans2.transform(TB2)
-#        print("original shape:   ", TB2.shape)
-#        print("transformed shape:", TB2_transformed.shape)
         # ------------------------------------------------------------------------------
         # JOIN THE TREATED VARIABLES IN ONE SINGLE DATASET AGAIN:
 
@@ -266,11 +249,9 @@ class Training:
 
         dataset = PCA1.join(PCA2, how='right')
         dataset = dataset.join(ancillary, how='right')
-        dataset = dataset.join(df_orig.loc[:, ['sfcprcp']], how='right')
+        sfcprcp = pd.DataFrame(y_true, columns=['sfcprcp'])
+        dataset = dataset.join(sfcprcp, how='right')
         # ------------------------------------------------------------------------------
-
-        dataset = self.keep_interval(0.2, 60, dataset, 'sfcprcp')
-
         # ----------------------------------------
         # SUBSET BY SPECIFIC CLASS (UNDERSAMPLING)
 #        n = 0.98
@@ -285,8 +266,8 @@ class Training:
         # Now split the dataset into a training set and a test set.
         # We will use the test set in the final evaluation of our model.
 
-        train_dataset = dataset.sample(frac=0.8, random_state=7)
-        test_dataset = dataset.drop(train_dataset.index)
+        x_train = dataset.sample(frac=0.8, random_state=7)
+        x_test = dataset.drop(x_train.index)
 
         # ------------------------------------------------------------------------------
         # Inspect the data:
@@ -296,7 +277,7 @@ class Training:
 
         # ------------------------------------------------------------------------------
         # Also look at the overall statistics:
-        train_stats = train_dataset.describe()
+        train_stats = x_train.describe()
         train_stats.pop("sfcprcp")
         train_stats = train_stats.transpose()
 
@@ -305,20 +286,14 @@ class Training:
         # Separate the target value, or "label", from the features.
         # This label is the value that you will train the model to predict.
 
-        y_train = train_dataset.pop('sfcprcp')
-        y_test = test_dataset.pop('sfcprcp')
+        y_train = x_train.pop('sfcprcp')
+        y_test = x_test.pop('sfcprcp')
 
         # ------------------------------------------------------------------------------
-        # Normalize the data:
-
-        scaler = StandardScaler()
-        normed_train_data = scaler.fit_transform(train_dataset)
-        normed_test_data = scaler.fit_transform(test_dataset)
-
         # ------------------------------------------------------------------------------
         # Build the model:
 
-        model = self.build_reg_model(len(train_dataset.keys()))
+        model = self.build_reg_model(len(x_train.keys()))
         # ------------------------------------------------------------------------------
         # Inspect the model:
         # Use the .summary method to print a simple description of the model
@@ -360,12 +335,12 @@ class Training:
         self.plot_history(history)
         # ------------------------------------------------------------------------------
 
-        model = self.build_reg_model(len(train_dataset.keys()))
+        model = self.build_reg_model(len(x_train.keys()))
 
         # The patience parameter is the amount of epochs to check for improvement
         early_stop = keras.callbacks.EarlyStopping(monitor='val_loss', patience=10)
 
-        history = model.fit(normed_train_data, y_train, epochs=EPOCHS,
+        history = model.fit(x_train, y_train, epochs=EPOCHS,
                             validation_split=0.2, verbose=0, callbacks=[early_stop, PrintDot()])
 
         # ------------------------------------------------------------------------------
@@ -382,7 +357,7 @@ class Training:
         # This tells us how well we can expect the model to predict
         # when we use it in the real world.
 
-        loss, mae, mse = model.evaluate(normed_test_data, y_test, verbose=0)
+        loss, mae, mse = model.evaluate(x_test, y_test, verbose=0)
 
         print("Testing set Mean Abs Error: {:5.2f} sfcprcp".format(mae))
         #------------------------------------------------------------------------------
@@ -390,12 +365,12 @@ class Training:
         # Make predictions
         # Finally, predict SFCPRCP values using data in the testing set:
 
-        test_predictions = model.predict(normed_test_data).flatten()
+        y_pred = model.predict(x_test).flatten()
 
         # Appplying meteorological skills to verify the performance of the TRAIN/TESTE model, in this case, continous scores:
 
         skills = ContinuousScores()
-        val_y_pred_mean, val_y_test_mean, val_mae, val_rmse, val_std, val_fseperc, val_fse, val_corr, val_num_pixels = skills.metrics(y_test, test_predictions)
+        val_y_pred_mean, val_y_test_mean, val_mae, val_rmse, val_std, val_fseperc, val_fse, val_corr, val_num_pixels = skills.metrics(y_test, y_pred)
         
         #converting to text file
         print("converting arrays to text files")
