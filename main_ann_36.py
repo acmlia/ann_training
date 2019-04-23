@@ -6,7 +6,7 @@ import os, sys
 import pandas as pd
 import numpy as np
 
-from src.training_ann_35 import Training
+from src.training_ann_36 import Training
 #from src.validation import Validation
 #from src.graphics_builder import GraphicsBuilder
 #from src.preprocess import Preprocess
@@ -48,14 +48,14 @@ def main() -> object:
 # RETRIEVAL CONFIGURATIONS:
 #------------------------------------------------------------------------------
     Retrieval = Training(random_seed=7,
-                   run_prefix='ann_35_',
-                   version='ann_35',
+                   run_prefix='ann_36_',
+                   version='ann_36',
                    version_nickname='_outliers',
                    csv_entry='train_data_11m_outliers.csv',
                    csv_path='/home/david/DATA/',
                    figure_path=git_dir+'ann_training/',
                    model_out_path=git_dir+'ann_training/',
-                   model_out_name='final_ann_35')
+                   model_out_name='final_ann_36')
 #
 #    Retrieval = Training(random_seed=7,
 #                   run_prefix='ann_20_',
