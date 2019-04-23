@@ -1,0 +1,13 @@
+Running on host node004
+Time is Seg Abr 22 21:52:40 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 5394
+This job runs on the following machines:
+node004
+Running /home/david/vp368cpu/bin/python /home/david/git-repos/ann_training/main_ann_35.py
+Using TensorFlow backend.
+TF version 1.13.1
+
+real	0m5.439s
+user	0m4.403s
+sys	0m2.152s

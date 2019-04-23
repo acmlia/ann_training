@@ -1,0 +1,42 @@
+Running on host node004
+Time is Seg Abr 22 21:55:45 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 5395
+This job runs on the following machines:
+node004
+Running /home/david/vp368cpu/bin/python /home/david/git-repos/ann_training/main_ann_35.py
+Using TensorFlow backend.
+WARNING:tensorflow:From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+22/04/2019 21:56:22 - From /home/david/vp368cpu/lib/python3.6/site-packages/tensorflow/python/ops/control_flow_ops.py:423: colocate_with (from tensorflow.python.framework.ops) is deprecated and will be removed in a future version.
+Instructions for updating:
+Colocations handled automatically by placer.
+TF version 1.13.1
+_________________________________________________________________
+Layer (type)                 Output Shape              Param #   
+=================================================================
+gaussian_noise_1 (GaussianNo (None, 16)                0         
+_________________________________________________________________
+dense_1 (Dense)              (None, 48)                816       
+_________________________________________________________________
+dense_2 (Dense)              (None, 10)                490       
+_________________________________________________________________
+dense_3 (Dense)              (None, 1)                 11        
+=================================================================
+Total params: 1,317
+Trainable params: 1,317
+Non-trainable params: 0
+_________________________________________________________________
+Traceback (most recent call last):
+  File "/home/david/git-repos/ann_training/main_ann_35.py", line 268, in <module>
+    main()
+  File "/home/david/git-repos/ann_training/main_ann_35.py", line 108, in main
+    Retrieval.autoExecReg()
+  File "/home/david/git-repos/ann_training/src/training_ann_35.py", line 322, in autoExecReg
+    normed_train_data, y_train,
+NameError: name 'normed_train_data' is not defined
+
+real	0m37.962s
+user	0m35.084s
+sys	0m7.974s

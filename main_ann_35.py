@@ -105,7 +105,7 @@ def main() -> object:
 #------------------------------------------------------------------------------
 # CALL THE PROGRAMS:
 #------------------------------------------------------------------------------
-#    Retrieval.autoExecReg()
+    Retrieval.autoExecReg()
 #    Screening.autoExecClass()
 #    pred.PredictScreening()
 #    pred.PredictRetrieval()
