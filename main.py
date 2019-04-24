@@ -11,7 +11,7 @@ import numpy as np
 #from src.graphics_builder import GraphicsBuilder
 #from src.preprocess import Preprocess
 #from src.pretraining import PreTraining
-from src.prediction_ann_30 import Prediction
+from src.prediction_ann_36 import Prediction
 #import src.meteoro_skills
 
 
@@ -89,7 +89,7 @@ def main() -> object:
                       file_csv='regional_all_input_SCR01_orbita_4299_30112014.csv',
                       path_csv='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
                       figure_path='/media/DATA/tmp/git-repositories/validation/NOV_2014/orbita_4299/',
-                      yaml_version='ann_30',
+                      yaml_version='ann_36',
                       yaml_file='final_',
                       yaml_path='/media/DATA/tmp/git-repositories/ann_training/models/')
 
@@ -98,7 +98,7 @@ def main() -> object:
 #                      file_csv='regional_2014-11_clip-br_all_input_SCR01.csv',
 #                      path_csv='/media/DATA/tmp/git-repositories/validation/NOV_2014/',
 #                      figure_path='/media/DATA/tmp/git-repositories/validation/NOV_2014/',
-#                      yaml_version='ann_30',
+#                      yaml_version='ann_36',
 #                      yaml_file='final_',
 #                      yaml_path='/media/DATA/tmp/git-repositories/ann_training/models/')
 
