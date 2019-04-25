@@ -1,0 +1,30 @@
+Running on host node004
+Time is Qua Abr 24 16:07:47 -03 2019
+Directory is /home/david/git-repos/ann_training
+Slurm job ID is 5404
+This job runs on the following machines:
+node004
+Running /home/david/vp368cpu/bin/python /home/david/git-repos/ann_training/tuning_screening_precipitation_A7.py
+Using TensorFlow backend.
+Traceback (most recent call last):
+  File "/home/david/git-repos/ann_training/tuning_screening_precipitation_A7.py", line 128, in <module>
+    grid_result = training_model.run_TuningScreeningPrecipitation()
+  File "/home/david/git-repos/ann_training/tuning_screening_precipitation_A7.py", line 66, in run_TuningScreeningPrecipitation
+    x, y= df.loc[:,['36V', '89V','89VH','166V','166VH','186V','190V','SI','PCT36','PCT89']], df.loc[:,['TagRain2']]
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/indexing.py", line 1494, in __getitem__
+    return self._getitem_tuple(key)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/indexing.py", line 888, in _getitem_tuple
+    retval = getattr(retval, self.name)._getitem_axis(key, axis=i)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/indexing.py", line 1902, in _getitem_axis
+    return self._getitem_iterable(key, axis=axis)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/indexing.py", line 1205, in _getitem_iterable
+    raise_missing=False)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/indexing.py", line 1161, in _get_listlike_indexer
+    raise_missing=raise_missing)
+  File "/home/david/vp368cpu/lib/python3.6/site-packages/pandas/core/indexing.py", line 1246, in _validate_read_indexer
+    key=key, axis=self.obj._get_axis_name(axis)))
+KeyError: "None of [Index(['TagRain2'], dtype='object')] are in the [columns]"
+
+real	0m35.714s
+user	0m31.895s
+sys	0m5.131s
