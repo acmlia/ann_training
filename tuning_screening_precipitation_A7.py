@@ -13,7 +13,7 @@ from keras.layers import Dense
 from keras.wrappers.scikit_learn import KerasClassifier
 from keras.callbacks import ModelCheckpoint
 from collections import Counter
-from meteoro_skills import CategoricalScores
+#from meteoro_skills import CategoricalScores
 #from imblearn.over_sampling import SMOTE # doctest: +NORMALIZE_WHITESPACE
 #from imblearn.combine import SMOTEENN, SMOTETomek
 
@@ -41,7 +41,7 @@ class TuningScreeningPrecipitation:
         '''
         # Create the Keras model:
         model = Sequential()
-        model.add(Dense(neurons, input_dim=4, kernel_initializer='uniform', activation='relu'))
+        model.add(Dense(neurons, input_dim=10, kernel_initializer='uniform', activation='relu'))
         model.add(Dense(neurons, kernel_initializer='uniform', activation='relu'))
         model.add(Dense(1, kernel_initializer='uniform', activation='sigmoid'))
         # Compile model
@@ -60,10 +60,10 @@ class TuningScreeningPrecipitation:
 
         # Load dataset:
         #path = '/home/david/DATA/'
-        path = '/media/DATA/tmp/git-repositories/brain/output/'
+        path = '/home/david/DATA/'
         file = 'train_data_11m_outliers.csv'
         df = pd.read_csv(os.path.join(path, file), sep=',', decimal='.')
-        x, y= df.loc[:,['36V', '89V','89VH','166V','166VH','186V', '190V','SI']], df.loc[:,['TagRain']]
+        x, y= df.loc[:,['36V', '89V','89VH','166V','166VH','186V','190V','SI','PCT36','PCT89']], df.loc[:,['TagRain2']]
         
         x_arr = np.asanyarray(x)
         y_arr = np.asanyarray(y)
@@ -96,7 +96,7 @@ class TuningScreeningPrecipitation:
                                 epochs=100, verbose=0)
 
         # Define the grid search parameters:
-        neurons = [8, 16, 32]
+        neurons = [20, 32]
         param_grid = dict(neurons=neurons)
         grid_model = GridSearchCV(estimator=model, param_grid=param_grid,
                                   cv=10, n_jobs=-1)
