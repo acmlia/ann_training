@@ -56,7 +56,7 @@ class CategoricalScores:
 class ContinuousScores:
 
     def metrics(self, obs, pred):
-
+ 
        y_pred_mean=np.nanmean(pred)
        y_true_mean=np.nanmean(obs)
        mae = mean_absolute_error(obs,pred)
@@ -66,7 +66,9 @@ class ContinuousScores:
        fse=rmse/y_true_mean
        corr=np.corrcoef(obs, pred)
        num_pixels=len(obs)
-       return y_pred_mean, y_true_mean, mae, rmse, std, fseperc, fse, corr, num_pixels
+       bias = (sum(pred-obs)/num_pixels)
+       armse = sqrt(sum(pred - obs - bias)/(num_pixels-1))
+       return y_pred_mean, y_true_mean, mae, rmse, std, fseperc, fse, corr, num_pixels, bias, armse
    
 #       y_pred_mean=np.mean(pred)
 #       y_true_mean=np.mean(obs)
